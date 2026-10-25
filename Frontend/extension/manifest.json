@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "DeepShield Video Companion",
+  "version": "2.0.0",
+  "minimum_chrome_version": "116",
+  "description": "Permission-based video checks on YouTube, Facebook and Instagram using your model server.",
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

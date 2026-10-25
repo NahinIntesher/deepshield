@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "epochs": 3,
+  "learning_rate": 0.00001,
+  "max_retention_drop": 0.02,
+  "samples": [
+    {"path":"F:/DeepFake_Research/replay/train_real.mp4","label":"Real","split":"replay","dataset":"FaceForensics++"},
+    {"path":"F:/DeepFake_Research/replay/train_fake.mp4","label":"Fake","split":"replay","dataset":"FaceForensics++"},
+    {"path":"F:/DeepFake_Research/replay/retention_real.mp4","label":"Real","split":"retention","dataset":"FaceForensics++"},
+    {"path":"F:/DeepFake_Research/replay/retention_fake.mp4","label":"Fake","split":"retention","dataset":"FaceForensics++"},
+    {"path":"F:/DeepFake_Research/replay/new_holdout_real.mp4","label":"Real","split":"new_validation","dataset":"consented_collection"},
+    {"path":"F:/DeepFake_Research/replay/new_holdout_fake.mp4","label":"Fake","split":"new_validation","dataset":"consented_collection"}
+  ]
+}

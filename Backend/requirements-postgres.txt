@@ -1,0 +1,2 @@
+# Optional future PostgreSQL driver; not required for local SQLite.
+psycopg[binary]>=3.1,<4

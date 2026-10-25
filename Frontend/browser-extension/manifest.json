@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "DeepShield · Video Insight",
+  "version": "1.0.0",
+  "description": "User-controlled analysis of visible videos on YouTube, Facebook and Instagram with a local DeepShield backend.",
+  "permissions": ["activeTab", "tabs", "storage"],
+  "host_permissions": ["http://localhost:8000/*", "http://127.0.0.1:8000/*"],
+  "action": {"default_title": "DeepShield · Video Insight", "default_popup": "popup.html"},
+  "background": {"service_worker": "background.js"},
+  "content_scripts": [{
+    "matches": [
+      "https://youtube.com/*", "https://*.youtube.com/*", "https://youtu.be/*",
+      "https://facebook.com/*", "https://*.facebook.com/*", "https://fb.watch/*",
+      "https://instagram.com/*", "https://*.instagram.com/*"
+    ],
+    "js": ["content.js"],
+    "run_at": "document_idle"
+  }]
+}

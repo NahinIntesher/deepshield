@@ -17,3 +17,12 @@ Database/continual/candidates/
 Model/hosting/.hf-cache/
 Model/inference-space/.hf-cache/
 Backend/.deploy-checkout/
+
+*.env.*
+!.env.example
+Model/videos/
+Database/logs/
+Database/library/
+Database/dataset/
+Backend/migration_backup_*/
+.vercel/

@@ -1,0 +1,12 @@
+{
+  "repository": "nahin-intesher/deepshield-checkpoint",
+  "url": "https://huggingface.co/nahin-intesher/deepshield-checkpoint",
+  "private": true,
+  "revision": "4666c152f8d7f4655107721fe1d49ac1db9eaca8",
+  "file": "best_model.pth",
+  "bytes": 618147845,
+  "local_sha256": "be33edbb69a80072439b8ea361ee9b00f635a2604ea2a4b9c1bfabe731067b7e",
+  "remote_sha256": "be33edbb69a80072439b8ea361ee9b00f635a2604ea2a4b9c1bfabe731067b7e",
+  "verified": true,
+  "hosting": "file storage only; no inference API"
+}

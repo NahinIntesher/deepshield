@@ -1,0 +1,10 @@
+{
+  "space": "nahin-intesher/deepshield-inference",
+  "private": true,
+  "revision": "43eac4389655bf3f921aed828e08834fa555a82a",
+  "sha256": "be33edbb69a80072439b8ea361ee9b00f635a2604ea2a4b9c1bfabe731067b7e",
+  "bytes": 618147845,
+  "code_uploaded": true,
+  "prediction_verified": true,
+  "prediction_verification_report": "Backend/docs/review/render-prediction-verification.json"
+}

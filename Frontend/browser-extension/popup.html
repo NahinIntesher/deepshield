@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeepShield</title><link rel="stylesheet" href="popup.css"></head><body>
+<header><div class="mark">D</div><div><strong>DEEPSHIELD</strong><small>VIDEO INSIGHT · LOCAL PREVIEW</small></div></header>
+<main>
+<section class="status"><span class="light" id="status-light"></span><div><strong id="status-title">Not connected</strong><p id="status-caption">Connect your DeepShield account to begin.</p></div></section>
+<div class="form"><label for="token">Extension access token</label><input id="token" type="password" placeholder="Paste token from DeepShield" autocomplete="off" spellcheck="false"/><button id="connect" class="primary">Connect account</button><button id="disconnect" class="ghost">Disconnect & clear token</button></div>
+<div class="divider"></div><div class="row"><div><strong>Auto-scan visible video</strong><p>Only this tab; user controlled</p></div><label class="toggle"><input type="checkbox" id="enable"/><span></span></label></div>
+<button id="scan" class="primary" disabled>Scan the current video</button>
+<p id="message" role="status" aria-live="polite"></p>
+<div class="foot"><span>YouTube · Facebook · Instagram</span><span>Actual ML results only</span></div>
+</main><script src="popup.js"></script></body></html>

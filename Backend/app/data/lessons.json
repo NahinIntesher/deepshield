@@ -1,0 +1,1010 @@
+[
+  {
+    "id": 0,
+    "en": {
+      "title": "A convincing face is not proof",
+      "time": "4 min",
+      "intro": "Imagine opening a video from a friend. Someone you recognize says something surprising. It looks ordinary, but the face or voice may have been changed using AI.",
+      "sections": [
+        [
+          "What is a deepfake?",
+          "A deepfake uses AI to create or change someone’s face, voice or actions. Some are clearly marked entertainment. Others make it seem as if a person said or did something that never happened."
+        ],
+        [
+          "What can a video hide?",
+          "A face can be swapped, speech can be imitated, or a mouth can be changed to match new words. A genuine video can also mislead when someone removes its context. You do not need to identify the exact technique to pause and check the claim."
+        ],
+        [
+          "Your first habit",
+          "Ask: who first published this, when did it happen, and is there another trustworthy source? A familiar face and many shares are not evidence on their own."
+        ]
+      ],
+      "flow": [
+        [
+          "Watch",
+          "Notice what the video is claiming."
+        ],
+        [
+          "Question",
+          "Ask where it came from."
+        ],
+        [
+          "Check",
+          "Look for an independent source."
+        ]
+      ],
+      "question": "A familiar person appears in a surprising video. What is the best first step?",
+      "choices": [
+        "Share it before it disappears",
+        "Check the original source and context",
+        "Assume every unusual video is fake"
+      ],
+      "feedback": "Start with the source. Real videos can look strange, and manipulated videos can look perfectly natural."
+    },
+    "bn": {
+      "title": "চেনা মুখ দেখলেই বিশ্বাস নয়",
+      "time": "৪ মিনিট",
+      "intro": "বন্ধুর পাঠানো ভিডিওতে দেখলেন, চেনা একজন অদ্ভুত কথা বলছেন। মুখ ও গলা স্বাভাবিক লাগলেও AI দিয়ে সেগুলো বদলানো হয়ে থাকতে পারে।",
+      "sections": [
+        [
+          "ডিপফেক কী?",
+          "AI দিয়ে কারও মুখ, গলা বা কাজের নকল তৈরি বা বদলানোকে ডিপফেক বলা হয়। কিছু ভিডিও বিনোদনের জন্য বানানো হয়। আবার কিছু ভিডিও দিয়ে এমন কথা বা কাজ দেখানো হয়, যা সেই ব্যক্তি কখনো বলেননি বা করেননি।"
+        ],
+        [
+          "ভিডিও দিয়ে কীভাবে ভুল বোঝানো হয়?",
+          "কারও মুখ বসিয়ে দেওয়া, গলা নকল করা বা নতুন কথার সঙ্গে ঠোঁটের নড়াচড়া মেলানো যায়। আসল ভিডিওর তারিখ বা ঘটনা বদলে লিখলেও মানুষ ভুল বুঝতে পারে। কৌশলটির নাম না জানলেও থেমে যাচাই করতে পারেন।"
+        ],
+        [
+          "আগে উৎস দেখুন",
+          "কে প্রথম ভিডিওটি দিয়েছেন? ঘটনাটি কবে ঘটেছে? অন্য বিশ্বাসযোগ্য সূত্র কী বলছে? চেনা মুখ বা অনেক শেয়ার—কোনোটিই একা প্রমাণ নয়।"
+        ]
+      ],
+      "flow": [
+        [
+          "দেখুন",
+          "ভিডিওতে কী দাবি করা হচ্ছে বুঝুন।"
+        ],
+        [
+          "প্রশ্ন করুন",
+          "কে, কখন ও কোথায় প্রকাশ করেছেন?"
+        ],
+        [
+          "মিলিয়ে দেখুন",
+          "অন্য নির্ভরযোগ্য সূত্র খুঁজুন।"
+        ]
+      ],
+      "question": "চেনা কারও অবাক করা ভিডিও দেখলে প্রথমে কী করবেন?",
+      "choices": [
+        "মুছে যাওয়ার আগে শেয়ার করব",
+        "মূল উৎস ও ঘটনার প্রেক্ষাপট যাচাই করব",
+        "অস্বাভাবিক দেখালেই নকল বলব"
+      ],
+      "feedback": "আগে উৎস যাচাই করুন। আসল ভিডিও অদ্ভুত লাগতে পারে, আবার নকল ভিডিও খুব স্বাভাবিকও লাগতে পারে।"
+    },
+    "answer": 1
+  },
+  {
+    "id": 1,
+    "en": {
+      "title": "Look for clues, then check context",
+      "time": "5 min",
+      "intro": "You do not need perfect eyesight or technical knowledge. Looking carefully helps, but a visual clue is a reason to investigate, not a final verdict.",
+      "sections": [
+        [
+          "Watch the face over time",
+          "Look at the mouth during speech, the edge of the face during movement, and changes in lighting. A face that changes shape or flickers may deserve a closer look. Normal compression, poor lighting and slow connections can produce similar effects."
+        ],
+        [
+          "Listen to the whole message",
+          "Does the sound match the mouth? Does the person ask for something unusual? Voice imitations can be convincing, so sounding like someone you know is not enough."
+        ],
+        [
+          "Do not rely on one “magic clue”",
+          "Some fake videos blink naturally. Some real videos have blurred faces or odd shadows. Check the original upload, the date and reporting from other sources before deciding."
+        ]
+      ],
+      "flow": [
+        [
+          "Face",
+          "Watch movement across frames."
+        ],
+        [
+          "Sound",
+          "Compare speech and context."
+        ],
+        [
+          "Source",
+          "Find the original upload."
+        ]
+      ],
+      "question": "A face looks blurry. Does that prove the video is fake?",
+      "choices": [
+        "Yes, real videos are always sharp",
+        "No, compression can also cause blur",
+        "Only if the video is popular"
+      ],
+      "feedback": "Blur alone cannot establish manipulation. Treat it as a clue and verify the wider context."
+    },
+    "bn": {
+      "title": "লক্ষণ দেখুন, তারপর ঘটনা যাচাই করুন",
+      "time": "৫ মিনিট",
+      "intro": "ভিডিও খেয়াল করে দেখা ভালো। কিন্তু কোনো একটি অস্বাভাবিক অংশ দেখেই নকল বলে দেওয়া ঠিক নয়।",
+      "sections": [
+        [
+          "মুখের নড়াচড়া দেখুন",
+          "কথার সময় ঠোঁট, মুখের কিনারা ও আলো দেখুন। মুখ হঠাৎ বদলে গেলে আরও যাচাই করুন। তবে কম আলো, ইন্টারনেটের সমস্যা বা ভিডিওর মান কমলেও এমন দেখা যেতে পারে।"
+        ],
+        [
+          "পুরো কথা শুনুন",
+          "শব্দের সঙ্গে ঠোঁটের নড়াচড়া মিলছে? অস্বাভাবিক কিছু চাওয়া হচ্ছে? গলা চেনা লাগলেই পরিচয় নিশ্চিত হয় না।"
+        ],
+        [
+          "একটি লক্ষণই শেষ কথা নয়",
+          "নকল ভিডিওতেও চোখ স্বাভাবিকভাবে পলক ফেলতে পারে। আসল ভিডিওতেও মুখ ঝাপসা হতে পারে। মূল ভিডিও, তারিখ ও অন্য খবর মিলিয়ে সিদ্ধান্ত নিন।"
+        ]
+      ],
+      "flow": [
+        [
+          "মুখ",
+          "কয়েক মুহূর্ত ধরে নড়াচড়া দেখুন।"
+        ],
+        [
+          "শব্দ",
+          "কথা ও ঠোঁট মিলিয়ে দেখুন।"
+        ],
+        [
+          "উৎস",
+          "প্রথম প্রকাশিত ভিডিও খুঁজুন।"
+        ]
+      ],
+      "question": "মুখ ঝাপসা দেখালেই কি ভিডিও নকল?",
+      "choices": [
+        "হ্যাঁ, আসল ভিডিও সবসময় পরিষ্কার",
+        "না, ভিডিওর মান কমলেও ঝাপসা হয়",
+        "শুধু জনপ্রিয় হলে নকল"
+      ],
+      "feedback": "শুধু ঝাপসা মুখ নকল হওয়ার প্রমাণ নয়। এটি আরও যাচাই করার একটি কারণ হতে পারে।"
+    },
+    "answer": 1
+  },
+  {
+    "id": 2,
+    "en": {
+      "title": "The urgent family call",
+      "time": "4 min",
+      "intro": "“I’m in trouble. Send money now. Please don’t tell anyone.” A message may sound like someone you love. The pressure to act quickly is exactly what you need to notice.",
+      "sections": [
+        [
+          "Recognize the pressure",
+          "Scammers may imitate a voice or face and combine it with an emergency story. Urgency, secrecy and an unusual payment request are reasons to slow down."
+        ],
+        [
+          "Use a different route",
+          "End the call and contact the person using a number you already have. Do not use a new number or link supplied in the suspicious message. You can also contact a trusted family member to check the story."
+        ],
+        [
+          "If you already responded",
+          "Stop sending money or information. Contact your payment provider through its official channel and preserve the messages. Tell the person being impersonated so they can warn others."
+        ]
+      ],
+      "flow": [
+        [
+          "Pause",
+          "Do not send money under pressure."
+        ],
+        [
+          "Call back",
+          "Use a saved, trusted number."
+        ],
+        [
+          "Verify",
+          "Confirm with someone you know."
+        ]
+      ],
+      "question": "A caller sounds like your sibling and requests an urgent transfer. What should you do?",
+      "choices": [
+        "Transfer immediately because the voice matches",
+        "Ask the caller for a payment link",
+        "Call your sibling using your saved number"
+      ],
+      "feedback": "An independent call back helps verify identity. A matching voice by itself cannot do that."
+    },
+    "bn": {
+      "title": "পরিবারের নামে জরুরি ফোন",
+      "time": "৪ মিনিট",
+      "intro": "“বিপদে আছি, এখনই টাকা পাঠাও, কাউকে বোলো না।” গলা আপনজনের মতো হলেও তাড়াহুড়া ও গোপন রাখার চাপ খেয়াল করুন।",
+      "sections": [
+        [
+          "চাপ চিনুন",
+          "প্রতারক চেনা মুখ বা গলা নকল করে জরুরি বিপদের গল্প বলতে পারে। তাড়াহুড়া, গোপনীয়তা ও অস্বাভাবিক টাকার দাবি দেখলে থামুন।"
+        ],
+        [
+          "নিজের জানা নম্বরে যোগাযোগ করুন",
+          "ফোন কেটে আপনার আগে থেকে সংরক্ষিত নম্বরে সেই ব্যক্তিকে ফোন করুন। সন্দেহের মেসেজে দেওয়া নতুন নম্বর বা লিংক ব্যবহার করবেন না। পরিবারের অন্য বিশ্বস্ত কাউকেও জিজ্ঞেস করতে পারেন।"
+        ],
+        [
+          "আগেই কিছু পাঠিয়ে থাকলে",
+          "আর টাকা বা তথ্য পাঠাবেন না। সেবাদাতার আসল যোগাযোগমাধ্যমে সাহায্য চান। মেসেজ রেখে দিন এবং যার পরিচয় নকল করা হয়েছে তাকে জানান।"
+        ]
+      ],
+      "flow": [
+        [
+          "থামুন",
+          "চাপের মুখে টাকা পাঠাবেন না।"
+        ],
+        [
+          "ফোন করুন",
+          "নিজের সংরক্ষিত নম্বর ব্যবহার করুন।"
+        ],
+        [
+          "নিশ্চিত হন",
+          "অন্য বিশ্বস্ত ব্যক্তির সঙ্গে কথা বলুন।"
+        ]
+      ],
+      "question": "ভাই বা বোনের মতো গলায় কেউ জরুরি টাকা চাইলে কী করবেন?",
+      "choices": [
+        "গলা মিলেছে, তাই পাঠাব",
+        "তার কাছে পেমেন্ট লিংক চাইব",
+        "নিজের সংরক্ষিত নম্বরে ভাই বা বোনকে ফোন করব"
+      ],
+      "feedback": "নিজের জানা নম্বরে আলাদাভাবে ফোন করলে পরিচয় যাচাই করা সহজ হয়। শুধু গলা মেলা যথেষ্ট নয়।"
+    },
+    "answer": 2
+  },
+  {
+    "id": 3,
+    "en": {
+      "title": "Celebrity offers and fake authority",
+      "time": "4 min",
+      "intro": "A famous person seems to recommend an investment. A video meeting looks like your boss asking for a payment. Familiarity and authority can make a request feel safer than it is.",
+      "sections": [
+        [
+          "Separate identity from the request",
+          "A recognizable face does not make an offer trustworthy. Guaranteed returns, secret opportunities and pressure to act today are reasons to stop and investigate."
+        ],
+        [
+          "Check outside the message",
+          "Go to the organization’s official website yourself. Confirm a payment request through your normal workplace process. Do not let a convincing video override that process."
+        ],
+        [
+          "Before you share",
+          "Sharing can spread a scam to people who trust you. If you cannot confirm the source, do not present it as fact. You can explain that it is unverified instead."
+        ]
+      ],
+      "flow": [
+        [
+          "Notice",
+          "Watch for urgency or guarantees."
+        ],
+        [
+          "Verify",
+          "Use official, independent channels."
+        ],
+        [
+          "Decide",
+          "Share only what you can support."
+        ]
+      ],
+      "question": "Your “manager” asks on video to bypass the usual payment checks. What is the safest response?",
+      "choices": [
+        "Keep the normal approval process and verify separately",
+        "Skip the checks because it is a video call",
+        "Send a small amount as a test"
+      ],
+      "feedback": "A normal verification process should still apply when a request comes through video."
+    },
+    "bn": {
+      "title": "বিখ্যাত ব্যক্তি বা বসের নামে প্রতারণা",
+      "time": "৪ মিনিট",
+      "intro": "ভিডিওতে কোনো তারকা বিনিয়োগের পরামর্শ দিচ্ছেন, বা বস নিয়ম ভেঙে টাকা পাঠাতে বলছেন। পরিচিতি ও পদমর্যাদা দেখে ঝুঁকি ভুলে যাবেন না।",
+      "sections": [
+        [
+          "মানুষ আর প্রস্তাব আলাদা করে দেখুন",
+          "চেনা মুখ থাকলেই প্রস্তাব নিরাপদ নয়। নিশ্চিত লাভ, গোপন সুযোগ বা আজই সিদ্ধান্তের চাপ থাকলে থেমে খোঁজ নিন।"
+        ],
+        [
+          "মেসেজের বাইরেও যাচাই করুন",
+          "নিজে প্রতিষ্ঠানের আসল ওয়েবসাইটে যান। অফিসে টাকা পাঠানোর নিয়ম মেনে অন্য মাধ্যমে নিশ্চিত হোন। ভিডিও দেখে স্বাভাবিক অনুমোদনের ধাপ বাদ দেবেন না।"
+        ],
+        [
+          "শেয়ার করার আগে ভাবুন",
+          "আপনার পরিচিতরা আপনাকে বিশ্বাস করেন। যাচাই ছাড়া শেয়ার করলে প্রতারণা ছড়াতে পারে। নিশ্চিত না হলে সেটি স্পষ্ট বলুন।"
+        ]
+      ],
+      "flow": [
+        [
+          "খেয়াল করুন",
+          "তাড়াহুড়া বা নিশ্চিত লাভের দাবি আছে?"
+        ],
+        [
+          "যাচাই করুন",
+          "প্রতিষ্ঠানের আসল মাধ্যমে খোঁজ নিন।"
+        ],
+        [
+          "সিদ্ধান্ত নিন",
+          "প্রমাণ থাকলে তবেই শেয়ার করুন।"
+        ]
+      ],
+      "question": "ভিডিওতে বস স্বাভাবিক অনুমোদন ছাড়া টাকা পাঠাতে বললে কী করবেন?",
+      "choices": [
+        "নিয়ম মেনে অন্য মাধ্যমে যাচাই করব",
+        "ভিডিও বলে নিয়ম বাদ দেব",
+        "পরীক্ষা করতে অল্প টাকা পাঠাব"
+      ],
+      "feedback": "ভিডিওতে বলা হলেও টাকা পাঠানোর স্বাভাবিক যাচাই ও অনুমোদন প্রয়োজন।"
+    },
+    "answer": 0
+  },
+  {
+    "id": 4,
+    "en": {
+      "title": "Use AI as a second opinion",
+      "time": "5 min",
+      "intro": "An AI detector looks for patterns learned from its training videos. It can help you investigate, but its prediction is not a certificate of truth.",
+      "sections": [
+        [
+          "What the prediction means",
+          "The detector gives a Real or Fake prediction and a model score. A high score means the model strongly prefers that answer. It is not a guarantee that the video is genuine or manipulated."
+        ],
+        [
+          "What a heatmap tells you",
+          "Highlighted areas show where the model’s output is sensitive to the input. They do not prove that those areas were edited. A model can pay attention to an irrelevant feature or make a confident mistake."
+        ],
+        [
+          "When people and AI disagree",
+          "Keep your original judgment, compare the evidence and check the source. Agreement is useful to study, but neither the person nor the model becomes automatically correct."
+        ]
+      ],
+      "flow": [
+        [
+          "Your view",
+          "Make your own judgment first."
+        ],
+        [
+          "AI view",
+          "Read the prediction and its limits."
+        ],
+        [
+          "Evidence",
+          "Verify the claim independently."
+        ]
+      ],
+      "question": "The detector returns “Fake” with a high score. What does that establish?",
+      "choices": [
+        "The person in the video is dishonest",
+        "The model favors Fake; further verification is still needed",
+        "Every highlighted pixel was edited"
+      ],
+      "feedback": "Model confidence and factual certainty are different. Use the result to guide verification."
+    },
+    "bn": {
+      "title": "AI-এর ফলাফলকে দ্বিতীয় মতামত ভাবুন",
+      "time": "৫ মিনিট",
+      "intro": "AI মডেল শেখার সময় পাওয়া ধরন মিলিয়ে অনুমান করে। যাচাইয়ে সাহায্য করতে পারে, কিন্তু তার ফলাফল সত্যতার সনদ নয়।",
+      "sections": [
+        [
+          "স্কোরের মানে কী?",
+          "মডেল আসল বা নকল বলে অনুমান ও একটি স্কোর দেয়। বেশি স্কোর মানে মডেল ওই উত্তরের দিকে বেশি ঝুঁকছে। এর মানে ভিডিও নিশ্চিতভাবে আসল বা নকল নয়।"
+        ],
+        [
+          "রঙিন মানচিত্র কী বোঝায়?",
+          "মুখের কোন জায়গার পিক্সেল বদলালে মডেলের উত্তর বেশি বদলাতে পারে, heatmap তা দেখায়। রঙ দেওয়া অংশ সম্পাদনা করা হয়েছিল—এমন প্রমাণ এটি দেয় না।"
+        ],
+        [
+          "মানুষ আর AI একমত না হলে",
+          "নিজের প্রথম মত, পাওয়া প্রমাণ ও মূল উৎস মিলিয়ে দেখুন। মানুষ বা AI—কেউই সবসময় সঠিক নয়।"
+        ]
+      ],
+      "flow": [
+        [
+          "নিজের মত",
+          "আগে নিজে বিচার করুন।"
+        ],
+        [
+          "AI-এর মত",
+          "ফলাফল ও সীমাবদ্ধতা পড়ুন।"
+        ],
+        [
+          "প্রমাণ",
+          "আলাদা সূত্রে দাবি যাচাই করুন।"
+        ]
+      ],
+      "question": "মডেল বেশি স্কোর দিয়ে নকল বললে কী বোঝা যায়?",
+      "choices": [
+        "ভিডিওর ব্যক্তি মিথ্যা বলছেন",
+        "মডেল নকল মনে করছে; আরও যাচাই দরকার",
+        "রঙ দেওয়া প্রতিটি পিক্সেল সম্পাদিত"
+      ],
+      "feedback": "মডেলের আত্মবিশ্বাস আর বাস্তব সত্য এক নয়। স্কোরটি আরও যাচাইয়ের সহায়তা হিসেবে ব্যবহার করুন।"
+    },
+    "answer": 1
+  },
+  {
+    "id": 5,
+    "en": {
+      "title": "Put your verification habit to work",
+      "time": "3 min",
+      "intro": "You now have a simple process you can use with any surprising video: pause, check and decide. The aim is thoughtful judgment, not finding a flaw in every clip.",
+      "sections": [
+        [
+          "Practice without rushing",
+          "In the Real vs Fake arena, watch the sample and make your own call. Feedback compares your answer with the dataset’s label. Your game answers build your overall accuracy and score."
+        ],
+        [
+          "Build accuracy before research",
+          "Research Challenge unlocks when you meet the configured accuracy and score requirements. An administrator can select qualified users as research contributors. Their judgments are reviewed before use in model adaptation."
+        ],
+        [
+          "Keep the habit outside the game",
+          "For a real-world claim, checking sources is more important than winning a round. It is okay to say “I cannot verify this yet.” That is often a better answer than an unsupported confident guess."
+        ]
+      ],
+      "flow": [
+        [
+          "Pause",
+          "Give yourself room to think."
+        ],
+        [
+          "Check",
+          "Seek independent evidence."
+        ],
+        [
+          "Decide",
+          "Act with appropriate confidence."
+        ]
+      ],
+      "question": "You cannot verify a dramatic clip. What is a reasonable next step?",
+      "choices": [
+        "Say it is unverified and avoid spreading it as fact",
+        "Choose Real because it looks good",
+        "Choose Fake because it is dramatic"
+      ],
+      "feedback": "Acknowledging uncertainty is a useful verification skill."
+    },
+    "bn": {
+      "title": "যাচাইয়ের অভ্যাস কাজে লাগান",
+      "time": "৩ মিনিট",
+      "intro": "সহজ নিয়ম: থামুন, যাচাই করুন, তারপর সিদ্ধান্ত নিন। প্রতিটি ভিডিওতে ভুল খোঁজার বদলে প্রমাণ বুঝতে চেষ্টা করুন।",
+      "sections": [
+        [
+          "চর্চা করুন",
+          "আসল বনাম নকল খেলায় ভিডিও দেখে নিজে উত্তর দিন। আপনার উত্তর dataset-এর জানা label-এর সঙ্গে মেলানো হয়। এতে খেলার পয়েন্ট ও সঠিক উত্তরের হার তৈরি হয়।"
+        ],
+        [
+          "গবেষণার আগে দক্ষতা গড়ুন",
+          "নির্ধারিত পয়েন্ট ও সঠিক উত্তরের হার অর্জন করলে গবেষণার সুযোগ খুলবে। নির্বাচিত গবেষকের দেওয়া নমুনা নতুন model তৈরিতে ব্যবহারের আগে যাচাই করা হয়।"
+        ],
+        [
+          "বাস্তবেও একই অভ্যাস রাখুন",
+          "বাস্তব ঘটনায় খেলায় জেতার চেয়ে উৎস যাচাই করা জরুরি। “এখনো নিশ্চিত হতে পারিনি”—এমন বলা ঠিক আছে। প্রমাণ ছাড়া জোর দিয়ে বলার চেয়ে এটি ভালো।"
+        ]
+      ],
+      "flow": [
+        [
+          "থামুন",
+          "ভাবার জন্য সময় নিন।"
+        ],
+        [
+          "যাচাই করুন",
+          "আলাদা সূত্রে প্রমাণ খুঁজুন।"
+        ],
+        [
+          "সিদ্ধান্ত নিন",
+          "যতটুকু জানেন ততটুকুই বলুন।"
+        ]
+      ],
+      "question": "চাঞ্চল্যকর ভিডিও যাচাই করতে পারছেন না। কী করবেন?",
+      "choices": [
+        "যাচাই হয়নি বলব এবং সত্য বলে ছড়াব না",
+        "দেখতে ভালো বলে আসল বলব",
+        "নাটকীয় বলে নকল বলব"
+      ],
+      "feedback": "অনিশ্চয়তা স্বীকার করাও ভালো যাচাইয়ের দক্ষতা।"
+    },
+    "answer": 0
+  },
+  {
+    "id": 6,
+    "en": {
+      "title": "A real video can tell a false story",
+      "time": "4 min",
+      "intro": "An old clip can be genuine and still be used to mislead you today.",
+      "sections": [
+        [
+          "Find the date",
+          "Look for an earlier upload. A clip from last year may be presented as breaking news."
+        ],
+        [
+          "Check the setting",
+          "Compare signs, weather and landmarks with the location being claimed. These are clues to investigate, not proof by themselves."
+        ],
+        [
+          "Separate two questions",
+          "Ask both “Was this video altered?” and “Is the story around it accurate?” A detector answers neither question with certainty."
+        ]
+      ],
+      "flow": [
+        [
+          "Notice",
+          "Identify the claim."
+        ],
+        [
+          "Check",
+          "Seek independent evidence."
+        ],
+        [
+          "Explain",
+          "State what you know."
+        ]
+      ],
+      "question": "The detector says Real, but the caption gives the wrong date. What should you conclude?",
+      "choices": [
+        "The caption must be correct",
+        "The detector checks every claim",
+        "A genuine video can have misleading context"
+      ],
+      "feedback": "A video’s authenticity and the truth of its caption are separate questions."
+    },
+    "bn": {
+      "title": "আসল ভিডিও, ভুল গল্প",
+      "time": "৪ মিনিট",
+      "intro": "গত বছরের আসল ভিডিও আজকের ঘটনা বলে ছড়ানো হতে পারে। ভিডিও আসল হলেও তার সঙ্গে লেখা গল্প ভুল হতে পারে।",
+      "sections": [
+        [
+          "তারিখ খুঁজুন",
+          "ভিডিওটি আগে কোথাও প্রকাশ হয়েছিল কি না দেখুন। পুরোনো ঘটনাকে নতুন খবর বলে চালানো হচ্ছে কি না মিলিয়ে নিন।"
+        ],
+        [
+          "স্থান মিলিয়ে দেখুন",
+          "সাইনবোর্ড, আবহাওয়া ও পরিচিত স্থাপনা দেখুন। দাবির জায়গার সঙ্গে মিল আছে কি না যাচাই করুন। শুধু একটি লক্ষণ দিয়ে নিশ্চিত হবেন না।"
+        ],
+        [
+          "দুটি প্রশ্ন আলাদা রাখুন",
+          "ভিডিও বদলানো হয়েছে কি? আর ভিডিও নিয়ে যে দাবি করা হচ্ছে, সেটি সত্য কি? এই দুটি আলাদা প্রশ্ন। AI কোনোটিরই নিশ্চয়তা দেয় না।"
+        ]
+      ],
+      "flow": [
+        [
+          "দাবি বুঝুন",
+          "কী ঘটনা বলা হচ্ছে দেখুন।"
+        ],
+        [
+          "মিলিয়ে নিন",
+          "তারিখ ও জায়গা যাচাই করুন।"
+        ],
+        [
+          "ব্যাখ্যা করুন",
+          "কী নিশ্চিত তা বলুন।"
+        ]
+      ],
+      "question": "মডেল আসল বলেছে, কিন্তু caption-এর তারিখ ভুল। কী বুঝবেন?",
+      "choices": [
+        "caption-ও ঠিক",
+        "মডেল সব দাবি যাচাই করে",
+        "আসল ভিডিওর সঙ্গেও ভুল গল্প থাকতে পারে"
+      ],
+      "feedback": "ভিডিও আসল কি না আর caption সত্য কি না—দুটি আলাদা বিষয়।"
+    },
+    "answer": 2
+  },
+  {
+    "id": 7,
+    "en": {
+      "title": "Trace a video to its source",
+      "time": "4 min",
+      "intro": "A screenshot of a repost is a starting point, not the end of your search.",
+      "sections": [
+        [
+          "Search distinctive details",
+          "Use a memorable phrase from the caption and the name of the person or place. Compare results from independent sources."
+        ],
+        [
+          "Try a still image",
+          "Pause on a clear frame and use an image search service to look for earlier appearances. Search results can be incomplete, so no match does not prove originality."
+        ],
+        [
+          "Keep the trail",
+          "Write down the source, upload date and what you could verify. This makes your judgment easier to explain."
+        ]
+      ],
+      "flow": [
+        [
+          "Notice",
+          "Identify the claim."
+        ],
+        [
+          "Check",
+          "Seek independent evidence."
+        ],
+        [
+          "Explain",
+          "State what you know."
+        ]
+      ],
+      "question": "An image search finds no match. What does that mean?",
+      "choices": [
+        "The video is definitely original",
+        "The search did not find a match; more checking may help",
+        "The video must be AI-generated"
+      ],
+      "feedback": "Search tools have gaps. A missing result is not a verdict."
+    },
+    "bn": {
+      "title": "ভিডিওর আসল উৎস খুঁজুন",
+      "time": "৪ মিনিট",
+      "intro": "অন্যের শেয়ার করা ভিডিও বা screenshot পেয়েই খোঁজ শেষ নয়। সেটি কোথা থেকে এসেছে বোঝার চেষ্টা করুন।",
+      "sections": [
+        [
+          "আলাদা কিছু দিয়ে খুঁজুন",
+          "caption-এর একটি বিশেষ বাক্য, ব্যক্তির নাম বা জায়গার নাম লিখে খুঁজুন। একাধিক স্বাধীন সূত্র মিলিয়ে দেখুন।"
+        ],
+        [
+          "একটি স্থির ছবি দিয়ে খুঁজুন",
+          "ভিডিওর পরিষ্কার মুহূর্তে থামিয়ে image search করতে পারেন। আগে কোথাও একই ছবি আছে কি না দেখুন। ফল না পেলেই ছবিটি নতুন—এমন নয়।"
+        ],
+        [
+          "তথ্য লিখে রাখুন",
+          "মূল লিংক, প্রকাশের তারিখ ও যা যাচাই করেছেন লিখুন। পরে নিজের সিদ্ধান্ত বোঝাতে সুবিধা হবে।"
+        ]
+      ],
+      "flow": [
+        [
+          "খেয়াল করুন",
+          "বিশেষ নাম বা দৃশ্য বেছে নিন।"
+        ],
+        [
+          "খুঁজুন",
+          "অন্য সূত্রে মিল দেখুন।"
+        ],
+        [
+          "লিখুন",
+          "উৎস ও প্রমাণ রেখে দিন।"
+        ]
+      ],
+      "question": "Image search-এ মিল না পেলে কী বোঝায়?",
+      "choices": [
+        "ভিডিও অবশ্যই নতুন",
+        "এই খোঁজে মিল পাওয়া যায়নি; আরও যাচাই দরকার",
+        "ভিডিও অবশ্যই AI দিয়ে বানানো"
+      ],
+      "feedback": "খোঁজার সেবায় সব তথ্য থাকে না। মিল না পাওয়া কোনো চূড়ান্ত সিদ্ধান্ত নয়।"
+    },
+    "answer": 1
+  },
+  {
+    "id": 8,
+    "en": {
+      "title": "When the voice sounds familiar",
+      "time": "4 min",
+      "intro": "A voice can feel personal even when the person behind the message is unknown.",
+      "sections": [
+        [
+          "Notice the request",
+          "Ask whether the requested action makes sense. Urgency and secrecy deserve attention even if the voice sounds natural."
+        ],
+        [
+          "Confirm through a trusted channel",
+          "Use a saved contact or an established work process. Avoid identity questions whose answers are easily found online."
+        ],
+        [
+          "Agree on a family plan",
+          "Decide in advance how you will verify unusual emergency requests. A shared plan reduces pressure in the moment."
+        ]
+      ],
+      "flow": [
+        [
+          "Notice",
+          "Identify the claim."
+        ],
+        [
+          "Check",
+          "Seek independent evidence."
+        ],
+        [
+          "Explain",
+          "State what you know."
+        ]
+      ],
+      "question": "Which check offers stronger evidence of identity?",
+      "choices": [
+        "Calling back through an independently saved contact",
+        "Recognizing the voice",
+        "Seeing a familiar profile photo"
+      ],
+      "feedback": "Use an independent contact route instead of relying on appearance or voice."
+    },
+    "bn": {
+      "title": "গলা চেনা লাগলেও যাচাই করুন",
+      "time": "৪ মিনিট",
+      "intro": "কারও গলা খুব আপন লাগতে পারে। তবু অনলাইনে অপর পাশের মানুষটির পরিচয় আলাদাভাবে নিশ্চিত করা দরকার।",
+      "sections": [
+        [
+          "কী চাওয়া হচ্ছে দেখুন",
+          "গলা স্বাভাবিক হলেও অনুরোধটি অস্বাভাবিক কি না ভাবুন। তাড়াহুড়া ও কাউকে না বলার চাপ খেয়াল করুন।"
+        ],
+        [
+          "বিশ্বস্ত পথে নিশ্চিত হোন",
+          "নিজের সংরক্ষিত নম্বর বা অফিসের পরিচিত ব্যবস্থা ব্যবহার করুন। অনলাইনে সহজে পাওয়া তথ্য জিজ্ঞেস করে পরিচয় নিশ্চিত হয়েছে ভাববেন না।"
+        ],
+        [
+          "পরিবারে আগে নিয়ম করুন",
+          "জরুরি টাকা চাইলে কীভাবে যাচাই করবেন আগে ঠিক করুন। বিপদের গল্প শুনে চাপ লাগলেও নিয়মটি সাহায্য করবে।"
+        ]
+      ],
+      "flow": [
+        [
+          "শুনুন",
+          "গলার চেয়ে অনুরোধটি বুঝুন।"
+        ],
+        [
+          "ফোন করুন",
+          "নিজের জানা নম্বর ব্যবহার করুন।"
+        ],
+        [
+          "মিলিয়ে নিন",
+          "পরিবারের ঠিক করা নিয়ম মানুন।"
+        ]
+      ],
+      "question": "পরিচয় যাচাইয়ের কোন পদ্ধতিটি বেশি কাজে লাগে?",
+      "choices": [
+        "নিজের সংরক্ষিত নম্বরে আলাদাভাবে ফোন করা",
+        "গলা চিনতে পারা",
+        "চেনা profile photo দেখা"
+      ],
+      "feedback": "শুধু মুখ বা গলা নয়, স্বাধীন যোগাযোগের পথ ব্যবহার করুন।"
+    },
+    "answer": 0
+  },
+  {
+    "id": 9,
+    "en": {
+      "title": "Read a heatmap without overreading it",
+      "time": "4 min",
+      "intro": "A bright patch is an explanation of model sensitivity, not a stamp that an edit happened there.",
+      "sections": [
+        [
+          "Start with the original crop",
+          "Compare the untouched face crop with the orange overlay. The overlay refers to exactly the same sampled moment."
+        ],
+        [
+          "Understand the color",
+          "A stronger highlight means greater sensitivity to pixel changes for this prediction. Colors are scaled within the map; they are not probabilities."
+        ],
+        [
+          "Explore other moments",
+          "Select another sampled face. The taller bars show relative frame sensitivity, not how fake each frame is."
+        ]
+      ],
+      "flow": [
+        [
+          "Notice",
+          "Identify the claim."
+        ],
+        [
+          "Check",
+          "Seek independent evidence."
+        ],
+        [
+          "Explain",
+          "State what you know."
+        ]
+      ],
+      "question": "A frame has the tallest sensitivity bar. What does this show?",
+      "choices": [
+        "It is certainly the fake frame",
+        "It was edited more than every other frame",
+        "It contributes the largest share of the displayed input sensitivity"
+      ],
+      "feedback": "Sensitivity explains a model response; it does not establish a forensic fact."
+    },
+    "bn": {
+      "title": "Heatmap বুঝে পড়ুন",
+      "time": "৪ মিনিট",
+      "intro": "মুখে উজ্জ্বল রং দেখলে সেই জায়গা নকল—এমন নয়। মানচিত্রটি মডেলের সংবেদনশীলতা বোঝায়।",
+      "sections": [
+        [
+          "মূল মুখের সঙ্গে মিলিয়ে দেখুন",
+          "বাঁয়ের স্বাভাবিক face crop আর ডানের কমলা রং একই মুখ ও মুহূর্তের। তুলনা করে দেখুন মডেল কোন অংশে বেশি সংবেদনশীল।"
+        ],
+        [
+          "রঙের মানে বুঝুন",
+          "বেশি রং মানে ওই পিক্সেল বদলালে এই সিদ্ধান্ত বেশি বদলাতে পারে। রং এই মানচিত্রের ভেতরে তুলনা দেখায়; নকল হওয়ার শতাংশ নয়।"
+        ],
+        [
+          "অন্য মুহূর্ত দেখুন",
+          "ভিডিওতে অন্য sampled face বেছে দেখতে পারেন। উঁচু bar বেশি sensitivity বোঝায়, বেশি নকল বোঝায় না। ছবির ক্ষেত্রে সময়ের এমন তুলনা নেই।"
+        ]
+      ],
+      "flow": [
+        [
+          "তুলনা করুন",
+          "মূল মুখ আর রং পাশাপাশি দেখুন।"
+        ],
+        [
+          "বুঝুন",
+          "রং নিশ্চিত প্রমাণ নয়।"
+        ],
+        [
+          "যাচাই করুন",
+          "আসল উৎসের তথ্য মিলিয়ে নিন।"
+        ]
+      ],
+      "question": "একটি frame-এর sensitivity bar সবচেয়ে উঁচু। এর মানে কী?",
+      "choices": [
+        "এটি অবশ্যই নকল frame",
+        "এটিতেই সবচেয়ে বেশি edit হয়েছে",
+        "দেখানো sensitivity-তে এই frame-এর অংশ সবচেয়ে বেশি"
+      ],
+      "feedback": "Sensitivity মডেলের উত্তর বোঝায়; আসল edit কোথায় হয়েছে তা প্রমাণ করে না।"
+    },
+    "answer": 2
+  },
+  {
+    "id": 10,
+    "en": {
+      "title": "Protect people when sharing evidence",
+      "time": "4 min",
+      "intro": "A suspicious video can affect a real person even when you are only trying to warn others.",
+      "sections": [
+        [
+          "Share only what is needed",
+          "Avoid reposting someone’s face, private conversation or identifying details without a good reason. Describe a concern without amplifying the harmful clip."
+        ],
+        [
+          "Use careful wording",
+          "Say what you verified and what remains uncertain. “This clip is unverified” is more accurate than an accusation you cannot support."
+        ],
+        [
+          "Report through the platform",
+          "Use the service’s reporting tools when content impersonates someone or attempts a scam. Save relevant source details for that report."
+        ]
+      ],
+      "flow": [
+        [
+          "Notice",
+          "Identify the claim."
+        ],
+        [
+          "Check",
+          "Seek independent evidence."
+        ],
+        [
+          "Explain",
+          "State what you know."
+        ]
+      ],
+      "question": "How can you warn friends about an unverified clip?",
+      "choices": [
+        "Accuse the person shown",
+        "Describe the concern and uncertainty without spreading private content",
+        "Forward the clip to everyone"
+      ],
+      "feedback": "A useful warning can protect people without increasing the harm."
+    },
+    "bn": {
+      "title": "সতর্ক করতে গিয়ে ক্ষতি বাড়াবেন না",
+      "time": "৪ মিনিট",
+      "intro": "সন্দেহজনক ভিডিওতে বাস্তব মানুষ থাকেন। অন্যকে সতর্ক করতে গিয়ে তাদের গোপনীয়তা বা সুনামের ক্ষতি হতে পারে।",
+      "sections": [
+        [
+          "যতটুকু দরকার ততটুকু জানান",
+          "প্রয়োজন ছাড়া কারও মুখ, ব্যক্তিগত কথা বা পরিচয় ছড়াবেন না। পুরো ক্ষতিকর ভিডিও না ছড়িয়েও সমস্যার কথা বলা যায়।"
+        ],
+        [
+          "সাবধানে কথা বলুন",
+          "কী যাচাই করেছেন আর কী জানেন না পরিষ্কার বলুন। প্রমাণ ছাড়া অভিযোগ করার বদলে “ভিডিওটি এখনো যাচাই হয়নি” বলুন।"
+        ],
+        [
+          "প্ল্যাটফর্মে report করুন",
+          "কারও পরিচয় নকল বা প্রতারণা হলে সংশ্লিষ্ট সাইটের report ব্যবস্থা ব্যবহার করুন। প্রয়োজনীয় লিংক ও তথ্য রেখে দিন।"
+        ]
+      ],
+      "flow": [
+        [
+          "ভাবুন",
+          "কার ক্ষতি হতে পারে বুঝুন।"
+        ],
+        [
+          "সীমিত রাখুন",
+          "ব্যক্তিগত তথ্য ছড়াবেন না।"
+        ],
+        [
+          "জানান",
+          "যথাযথভাবে report করুন।"
+        ]
+      ],
+      "question": "অযাচাইকৃত ভিডিও নিয়ে বন্ধুদের কীভাবে সতর্ক করবেন?",
+      "choices": [
+        "ভিডিওর ব্যক্তিকে দোষ দেব",
+        "ব্যক্তিগত ভিডিও না ছড়িয়ে উদ্বেগ ও অনিশ্চয়তা বোঝাব",
+        "সবাইকে ভিডিও forward করব"
+      ],
+      "feedback": "ভালো সতর্কবার্তা অন্যকে রক্ষা করে, ক্ষতিকর প্রচার বাড়ায় না।"
+    },
+    "answer": 1
+  },
+  {
+    "id": 11,
+    "en": {
+      "title": "Make a judgment you can explain",
+      "time": "4 min",
+      "intro": "Research is more useful when a decision comes with an honest description of the evidence.",
+      "sections": [
+        [
+          "Make your own call first",
+          "Give your judgment before looking at the AI output. This helps the study compare independent human and model decisions."
+        ],
+        [
+          "Use confidence honestly",
+          "Choose a lower confidence when the evidence is weak. Changing the number to look skilled makes the study less informative."
+        ],
+        [
+          "Understand reviewed learning",
+          "Selected researcher contributions go into a review queue. Verified samples can support candidate training alongside older examples; user votes do not instantly rewrite the detector."
+        ]
+      ],
+      "flow": [
+        [
+          "Notice",
+          "Identify the claim."
+        ],
+        [
+          "Check",
+          "Seek independent evidence."
+        ],
+        [
+          "Explain",
+          "State what you know."
+        ]
+      ],
+      "question": "Why record your judgment before viewing the AI result?",
+      "choices": [
+        "To preserve an independent human judgment",
+        "To guarantee that humans beat AI",
+        "To make uncertain answers count as correct"
+      ],
+      "feedback": "Independent judgments let researchers examine agreement and disagreement fairly."
+    },
+    "bn": {
+      "title": "নিজের সিদ্ধান্ত বুঝিয়ে বলুন",
+      "time": "৪ মিনিট",
+      "intro": "গবেষণায় শুধু উত্তর নয়, কোন প্রমাণ দেখে উত্তর দিলেন এবং কতটা নিশ্চিত—সেটিও দরকার।",
+      "sections": [
+        [
+          "আগে নিজে উত্তর দিন",
+          "AI-এর ফলাফল দেখার আগে নিজের মত দিন। এতে মানুষের স্বাধীন সিদ্ধান্তের সঙ্গে মডেলের সিদ্ধান্ত তুলনা করা যায়।"
+        ],
+        [
+          "আত্মবিশ্বাস সৎভাবে জানান",
+          "প্রমাণ কম থাকলে কম confidence দিন। দক্ষ দেখাতে বেশি আত্মবিশ্বাস দেখালে গবেষণার তথ্য ভুল হতে পারে।"
+        ],
+        [
+          "নতুন মডেল কীভাবে শেখে বুঝুন",
+          "নির্বাচিত গবেষকের নমুনা review queue-তে যায়। যাচাই করা নমুনা ও পুরোনো training example দিয়ে আলাদা candidate model শেখানো হয়। একটি vote দিলেই চলমান detector বদলে যায় না।"
+        ]
+      ],
+      "flow": [
+        [
+          "সিদ্ধান্ত দিন",
+          "আগে নিজের মত লিখুন।"
+        ],
+        [
+          "কারণ বলুন",
+          "কী লক্ষ করেছেন জানান।"
+        ],
+        [
+          "সৎ থাকুন",
+          "অনিশ্চিত হলে সেটি বলুন।"
+        ]
+      ],
+      "question": "AI-এর ফলাফলের আগে নিজের উত্তর দেওয়া দরকার কেন?",
+      "choices": [
+        "মানুষের স্বাধীন মত সংরক্ষণ করতে",
+        "মানুষ সবসময় AI-কে হারাবে নিশ্চিত করতে",
+        "অনিশ্চিত উত্তরকে সঠিক ধরতে"
+      ],
+      "feedback": "স্বাধীন মত থাকলে মানুষ ও AI কোথায় একমত বা ভিন্নমত হয়, তা সঠিকভাবে দেখা যায়।"
+    },
+    "answer": 0
+  }
+]

@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: deepshield-backend
+    runtime: python
+    plan: free
+    region: singapore
+    rootDir: Backend
+    buildCommand: pip install -r requirements-web.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: COOKIE_SECURE
+        value: 'true'
+      - key: COOKIE_SAMESITE
+        value: none
+      - key: DATA_ROOT
+        value: /tmp/deepshield-data
+      - key: VIDEOS_DIR
+        value: /tmp/deepshield-videos
+      - key: MODEL_SPACE_ID
+        value: nahin-intesher/deepshield-inference
+      - key: MEDIA_STORAGE_ENABLED
+        value: 'true'
+      - key: MEDIA_BUCKET
+        value: deepshield-media
+      - key: AWS_REGION
+        value: ap-southeast-1
+      - key: DATABASE_URL
+        sync: false
+      - key: MODEL_SPACE_TOKEN
+        sync: false
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: AWS_ENDPOINT_URL_S3
+        sync: false
+      - key: CORS_ORIGINS
+        value: http://localhost:3000,http://127.0.0.1:3000

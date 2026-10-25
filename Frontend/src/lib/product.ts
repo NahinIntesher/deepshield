@@ -1,0 +1,4 @@
+import {API_BASE,apiFetch} from './api';
+export async function request(path:string,body?:unknown,method='POST'){const r=await apiFetch(API_BASE+'/api'+path,body===undefined?{}:{method,headers:body instanceof FormData?undefined:{'Content-Type':'application/json'},body:body instanceof FormData?body:JSON.stringify(body)});const d=await r.json().catch(()=>null);if(!r.ok)throw Error(typeof d?.detail==='string'?d.detail:Array.isArray(d?.detail)?d.detail.map((x:{msg:string})=>x.msg).join(' '):'Could not complete the request. Try again.');return d;}
+export const when=(date:string)=>new Date(date.endsWith('Z')?date:date+'Z').toLocaleString(typeof document!=='undefined'&&document.documentElement.lang==='bn'?'bn-BD':'en-GB',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+export function source(value:string){try{const u=new URL(value);return u.hostname.replace('www.','')+u.pathname}catch{return value}}

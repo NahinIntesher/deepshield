@@ -23,5 +23,5 @@ def retrieve(url,folder):
  result=subprocess.run([sys.executable,str(Path(__file__).with_name('social_worker.py')),url,str(folder)],capture_output=True,text=True,timeout=180)
  if result.returncode:raise RuntimeError('The public video could not be retrieved. Platform restrictions, login requirements or unsupported formats can cause this. Upload a copy you are allowed to analyze instead.')
  files=[p for p in Path(folder).iterdir() if p.suffix in ('.mp4','.webm','.mkv','.mov')]
- if len(files)!=1 or files[0].stat().st_size>250*1024*1024:raise RuntimeError('No supported video within the 250 MiB limit was retrieved.')
+ if len(files)!=1 or files[0].stat().st_size>50_000_000:raise RuntimeError('No supported video within the 50 MB limit was retrieved.')
  return files[0]

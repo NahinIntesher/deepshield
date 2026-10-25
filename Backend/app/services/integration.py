@@ -23,7 +23,7 @@ ALLOWED_HOSTS = {
     'm.facebook.com':'Facebook','web.facebook.com':'Facebook',
     'fb.watch':'Facebook','instagram.com':'Instagram','www.instagram.com':'Instagram',
 }
-MAX_UPLOAD_BYTES=250*1024*1024
+MAX_UPLOAD_BYTES=50_000_000
 MODEL_QUEUE=threading.BoundedSemaphore(1)
 
 def platform_for_url(value: str) -> str:
@@ -66,7 +66,7 @@ def download_public_video(url: str, directory: Path) -> Path:
         raise HTTPException(503,'Link extraction dependency is missing: install yt-dlp from requirements.txt')
     def progress(p):
         count=p.get('downloaded_bytes') or p.get('total_bytes') or p.get('total_bytes_estimate') or 0
-        if count>MAX_UPLOAD_BYTES: raise HTTPException(413,'Video exceeds the 250 MiB limit')
+        if count>MAX_UPLOAD_BYTES: raise HTTPException(413,'Video exceeds the 50 MB limit')
     opts={
         'quiet':True,'no_warnings':True,'noplaylist':True,'skip_download':False,
         'outtmpl':str(directory/'public-video.%(ext)s'),
@@ -89,5 +89,5 @@ def download_public_video(url: str, directory: Path) -> Path:
     files=[p for p in directory.glob('public-video.*') if p.is_file() and p.suffix.lower() in ('.mp4','.webm','.mkv','.mov')]
     if len(files)!=1: raise HTTPException(422,'The public link did not produce a playable video')
     target=files[0]
-    if target.stat().st_size>MAX_UPLOAD_BYTES: raise HTTPException(413,'Video exceeds 250 MiB')
+    if target.stat().st_size>MAX_UPLOAD_BYTES: raise HTTPException(413,'Video exceeds 50 MB')
     return target

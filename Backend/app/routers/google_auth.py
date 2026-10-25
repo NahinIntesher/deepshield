@@ -57,7 +57,7 @@ def login(payload:GoogleLogin,request:Request,response:Response,db=Depends(get_d
  if identity:user=db.get(User,identity.user_id)
  else:
   # Never merge accounts by email or accept role/identity fields from the browser.
-  user=User(username='google_'+secrets.token_hex(8),display_name=str(claims.get('name') or 'Google member').strip()[:64] or 'Google member',role='participant')
+  user=User(username='google_'+secrets.token_hex(8),display_name=str(claims.get('name') or 'Google member').strip()[:64] or 'Google member',role='participant',needs_profile=True)
   db.add(user);db.flush();db.add(GoogleIdentity(subject=subject,user_id=user.id))
   try:db.commit()
   except IntegrityError:
@@ -68,4 +68,5 @@ def login(payload:GoogleLogin,request:Request,response:Response,db=Depends(get_d
  qualify(db,user)
  issue_session(db,response,user,request.cookies.get(COOKIE))
  response.delete_cookie(NONCE_COOKIE)
- return {'id':user.id,'username':user.username,'display_name':user.display_name,'role':user.role,'score':user.score,'games_played':user.games_played,'total_correct':user.total_correct,'total_rounds_played':user.total_rounds_played,'accuracy':user.accuracy,'qualified_for_research':user.qualified_for_research,'has_password':user.has_password}
+ from ..models.schemas import UserResponse
+ return UserResponse.model_validate(user)

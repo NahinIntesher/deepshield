@@ -113,7 +113,7 @@ def create_media(file:UploadFile=File(...),title:str=Form(...),ground_truth:Lite
         with path.open('wb') as out:
             while chunk:=file.file.read(1024*1024):
                 size+=len(chunk)
-                if size>250*1024*1024:raise HTTPException(413,'Maximum video size is 250 MiB.')
+                if size>50_000_000:raise HTTPException(413,'Maximum video size is 50 MB.')
                 out.write(chunk)
         validate_video(path)
         from ..services.media_store import persist

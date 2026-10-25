@@ -1,10 +1,11 @@
 import base64
+import os
 import hashlib
 import hmac
 import secrets
 import time, threading
 from collections import defaultdict, deque
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 from fastapi import APIRouter, Depends, HTTPException, Response, Request
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
@@ -60,34 +61,20 @@ def _verify_password(password: str, encoded_hash: str) -> bool:
     return hmac.compare_digest(actual_digest, expected_digest)
 
 
-@router.post("/signup", response_model=UserResponse, status_code=201)
-def signup(payload: UserSignupRequest, response: Response, request: Request, db: Session = Depends(get_db)):
+@router.post("/signup", status_code=202)
+def signup(payload: UserSignupRequest, request: Request, db: Session = Depends(get_db)):
     rate_limit(request)
-    username = payload.username.strip().lower()
-    if len(username) < 2:
-        raise HTTPException(status_code=422, detail="Username must contain at least 2 characters")
-    display_name = payload.display_name.strip()
-    if not display_name:
-        raise HTTPException(status_code=422, detail="Display name cannot be empty")
-
-    if db.query(User).filter(User.username == username).first():
-        raise HTTPException(status_code=409, detail="That username is already registered")
-
-    user = User(
-        username=username,
-        display_name=display_name,
-        password_hash=_hash_password(payload.password),
-        role="participant",
-    )
+    if os.getenv('EMAIL_VERIFICATION_REQUIRED','false').lower()=='true':
+        from ..services.email_verification import begin
+        return begin(db,payload,_hash_password(payload.password))
+    username=payload.username.strip().lower();name=payload.display_name.strip();email=str(payload.email).lower()
+    if len(username)<2 or not name:raise HTTPException(422,'A username and display name are required.')
+    user=User(username=username,display_name=name,email=email,password_hash=_hash_password(payload.password),role='participant',needs_profile=False)
     db.add(user)
-    try:
-        db.commit()
+    try:db.commit()
     except IntegrityError:
-        db.rollback()
-        raise HTTPException(status_code=409, detail="That username is already registered")
-    db.refresh(user)
-    issue_session(db, response, user, request.cookies.get(COOKIE))
-    return user
+        db.rollback();raise HTTPException(409,'This username or email is already registered. Sign in instead.')
+    return {'verification_required':False,'message':'Account created. Sign in with your username and password.'}
 
 
 @router.post("/login", response_model=UserResponse)
@@ -181,23 +168,9 @@ def mobile_login(payload: UserLoginRequest, request: Request, db: Session = Depe
     return {'token': issue_mobile_session(db, user), 'user': user}
 
 
-@router.post('/mobile/signup', response_model=MobileAuthResponse, status_code=201)
+@router.post('/mobile/signup', status_code=202)
 def mobile_signup(payload: UserSignupRequest, request: Request, db: Session = Depends(get_db)):
-    rate_limit(request)
-    username = payload.username.strip().lower()
-    if len(username) < 2 or not payload.display_name.strip():
-        raise HTTPException(422, 'A valid username and display name are required')
-    if db.query(User).filter(User.username == username).first():
-        raise HTTPException(409, 'That username is already registered')
-    user = User(username=username, display_name=payload.display_name.strip(),
-                password_hash=_hash_password(payload.password), role='participant')
-    db.add(user)
-    try: db.commit()
-    except IntegrityError:
-        db.rollback()
-        raise HTTPException(409, 'That username is already registered')
-    db.refresh(user)
-    return {'token': issue_mobile_session(db, user), 'user': user}
+    return signup(payload,request,db)
 
 
 @router.post('/mobile/admin/login', response_model=MobileAuthResponse)
@@ -220,3 +193,43 @@ def mobile_logout(request: Request, db: Session = Depends(get_db)):
         db.query(AuthSession).filter_by(token_hash=hashlib.sha256(header[7:].encode()).hexdigest()).delete()
         db.commit()
     return {'ok': True}
+
+
+class VerificationInput(BaseModel):
+    token: str = Field(min_length=40,max_length=128)
+
+class ResendInput(BaseModel):
+    email: EmailStr
+
+@router.post('/verify-email')
+def verify_email(payload:VerificationInput,request:Request,db=Depends(get_db)):
+    rate_limit(request)
+    from ..services.email_verification import verify
+    return verify(db,payload.token)
+
+@router.post('/resend-verification')
+def resend_verification(payload:ResendInput,request:Request,db=Depends(get_db)):
+    rate_limit(request)
+    from ..services.email_verification import resend
+    return resend(db,payload.email)
+
+class ProfileCompletion(BaseModel):
+    username: str = Field(min_length=2,max_length=50,pattern=r'^[A-Za-z0-9_.-]+$')
+    display_name: str = Field(min_length=1,max_length=64)
+    password: str | None = Field(default=None,min_length=12,max_length=128)
+
+@router.post('/onboarding',response_model=UserResponse)
+def complete_profile(payload:ProfileCompletion,request:Request,response:Response,user=Depends(current_user),db=Depends(get_db)):
+    rate_limit(request)
+    if not user.needs_profile:raise HTTPException(409,'Your profile is already complete.')
+    name=payload.display_name.strip();username=payload.username.strip().lower()
+    if not name:raise HTTPException(422,'Display name cannot be empty.')
+    if username.startswith('google_'):raise HTTPException(422,'Choose a personal username without the google_ prefix.')
+    if db.query(User).filter(User.username==username,User.id!=user.id).first():raise HTTPException(409,'That username is already registered')
+    user.username=username;user.display_name=name;user.needs_profile=False
+    if payload.password:user.password_hash=_hash_password(payload.password)
+    try:db.commit()
+    except IntegrityError:
+        db.rollback();raise HTTPException(409,'That username is already registered')
+    issue_session(db,response,user,request.cookies.get(COOKIE))
+    return user

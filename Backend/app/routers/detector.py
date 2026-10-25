@@ -18,7 +18,7 @@ router = APIRouter(dependencies=[Depends(current_user)], prefix='/api', tags=['V
 def detector_service():
     from ..services.remote_inference import enabled
     return {'remote_processing':enabled(),'processor':'Hugging Face private Space' if enabled() else 'DeepShield server',
-            'temporary_remote_media':enabled()}
+            'temporary_remote_media':enabled(),'max_video_bytes':50_000_000,'max_image_bytes':20*1024*1024}
 
 @router.get('/media/{token}')
 def serve_video(token: str):

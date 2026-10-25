@@ -7,6 +7,8 @@ import warnings
 from PIL import Image, ImageOps, UnidentifiedImageError
 from fastapi import HTTPException
 
+VIDEO_MAX_BYTES = 50_000_000
+
 IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp'}
 IMAGE_MAX_BYTES = 20 * 1024 * 1024
 IMAGE_MAX_PIXELS = 32_000_000
@@ -45,6 +47,8 @@ def validate_image(path: Path):
 
 
 def validate_video(path: Path):
+    if path.stat().st_size > VIDEO_MAX_BYTES:
+        raise HTTPException(413, 'Maximum video size is 50 MB.')
     with path.open('rb') as source:
         header = source.read(64)
     recognized = (b'ftyp' in header[:32] or header[:4] == b'\x1aE\xdf\xa3'

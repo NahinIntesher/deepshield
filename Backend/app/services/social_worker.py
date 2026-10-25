@@ -21,8 +21,8 @@ if __name__=='__main__':
  from yt_dlp.utils import DownloadError
  start=time.monotonic()
  def progress(info):
-  if info.get('downloaded_bytes',0)>250*1024*1024 or time.monotonic()-start>160:raise DownloadError('Processing limit reached')
+  if info.get('downloaded_bytes',0)>50_000_000 or time.monotonic()-start>160:raise DownloadError('Processing limit reached')
  def match(info,*,incomplete):
   if info.get('is_live') or info.get('duration',0)>600:return 'Choose a non-live video under ten minutes'
- opts={'outtmpl':str(Path(sys.argv[2])/'video.%(ext)s'),'quiet':True,'no_warnings':True,'proxy':'','cachedir':False,'noplaylist':True,'playlistend':1,'max_downloads':1,'max_filesize':250*1024*1024,'socket_timeout':15,'retries':1,'extractor_retries':1,'fragment_retries':1,'enable_file_urls':False,'allowed_extractors':['youtube','facebook.*','instagram.*'],'format':'best[height<=720][protocol=https]/bestvideo[height<=720][protocol=https]/best[height<=720][protocol=http]','fixup':'never','progress_hooks':[progress],'match_filter':match,'windowsfilenames':True}
+ opts={'outtmpl':str(Path(sys.argv[2])/'video.%(ext)s'),'quiet':True,'no_warnings':True,'proxy':'','cachedir':False,'noplaylist':True,'playlistend':1,'max_downloads':1,'max_filesize':50_000_000,'socket_timeout':15,'retries':1,'extractor_retries':1,'fragment_retries':1,'enable_file_urls':False,'allowed_extractors':['youtube','facebook.*','instagram.*'],'format':'best[height<=720][protocol=https]/bestvideo[height<=720][protocol=https]/best[height<=720][protocol=http]','fixup':'never','progress_hooks':[progress],'match_filter':match,'windowsfilenames':True}
  with YoutubeDL(opts) as y:y.download([sys.argv[1]])

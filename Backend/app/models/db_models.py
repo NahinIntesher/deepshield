@@ -10,6 +10,9 @@ class User(Base):
     username = Column(String(64), unique=True, index=True, nullable=False)
     display_name = Column(String(64), nullable=False)
     password_hash = Column(String(255), nullable=True)
+    email = Column(String(254), unique=True, nullable=True)
+    email_verified_at = Column(DateTime, nullable=True)
+    needs_profile = Column(Boolean, nullable=False, default=False)
     role = Column(String(32), default="participant")  # "participant", "researcher", "admin"
     score = Column(Integer, default=0)
     games_played = Column(Integer, default=0)

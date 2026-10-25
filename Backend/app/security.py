@@ -5,10 +5,11 @@ from .models.db_models import AuthSession, User, VideoAttempt
 from .config import COOKIE_SECURE, COOKIE_SAMESITE, QUALIFICATION_MIN_SCORE, QUALIFICATION_ACCURACY_THRESHOLD
 COOKIE = "deepshield_session"
 
-def session_user(db, token):
+def session_user(db, token, allow_incomplete=False):
     if not token: return None
     row = db.get(AuthSession, hashlib.sha256(token.encode()).hexdigest())
-    return db.get(User, row.user_id) if row and row.expires > time.time() else None
+    user=db.get(User, row.user_id) if row and row.expires > time.time() else None
+    return user if user and (allow_incomplete or not user.needs_profile) else None
 
 def issue_session(db, response, user, previous_token=None):
     db.query(AuthSession).filter(AuthSession.expires < time.time()).delete()
@@ -29,16 +30,18 @@ def issue_mobile_session(db, user):
     return token
 
 
-def bearer_mobile_user(db, header):
+def bearer_mobile_user(db, header, allow_incomplete=False):
     if not header.startswith('Bearer dsm_'):
         return None
-    return session_user(db, header[7:])
+    return session_user(db, header[7:],allow_incomplete)
 
 
 def current_user(request: Request, db=Depends(get_db)):
     auth = request.headers.get('authorization', '')
-    user = bearer_mobile_user(db, auth) if auth.startswith('Bearer dsm_') else session_user(db, request.cookies.get(COOKIE))
+    user = bearer_mobile_user(db, auth,True) if auth.startswith('Bearer dsm_') else session_user(db, request.cookies.get(COOKIE),True)
     if not user: raise HTTPException(401, "Please log in again")
+    if user.needs_profile and request.url.path not in ('/api/auth/me','/api/auth/onboarding','/api/auth/logout','/api/auth/mobile/logout'):
+        raise HTTPException(403,'Complete your username and display name before continuing.')
     return user
 
 def admin_user(user=Depends(current_user)):

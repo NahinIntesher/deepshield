@@ -1,5 +1,5 @@
 from typing import List, Optional, Dict, Any
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 
 # --- User & Auth Schemas ---
 class UserLoginRequest(BaseModel):
@@ -7,9 +7,11 @@ class UserLoginRequest(BaseModel):
     password: str = Field(..., min_length=8, max_length=128)
 
 class UserSignupRequest(BaseModel):
-    username: str = Field(..., min_length=2, max_length=50)
+    username: str = Field(..., min_length=2, max_length=50, pattern=r'^[A-Za-z0-9_.-]+$')
     display_name: str = Field(..., min_length=1, max_length=64)
     password: str = Field(..., min_length=8, max_length=128)
+    email: EmailStr = Field(max_length=254)
+    language: str = Field(default='en', pattern=r'^(en|bn)$')
 
 class UserResponse(BaseModel):
     id: int
@@ -23,6 +25,7 @@ class UserResponse(BaseModel):
     accuracy: float
     qualified_for_research: bool
     has_password: bool = True
+    needs_profile: bool = False
 
     class Config:
         from_attributes = True

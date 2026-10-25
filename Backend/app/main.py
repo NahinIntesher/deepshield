@@ -49,8 +49,8 @@ async def request_security(request: Request, call_next):
     length = request.headers.get('content-length')
     if length:
         try:
-            if int(length) > 251 * 1024 * 1024:
-                return JSONResponse({'detail': 'Maximum video size is 250 MiB.'}, status_code=413)
+            if int(length) > 50_000_000 + 1024 * 1024:
+                return JSONResponse({'detail': 'Maximum video size is 50 MB.'}, status_code=413)
         except ValueError:
             return JSONResponse({'detail': 'Invalid request size.'}, status_code=400)
     if request.method in ("POST","PATCH","PUT","DELETE"):

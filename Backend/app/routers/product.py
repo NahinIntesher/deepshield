@@ -24,7 +24,9 @@ def scan_user(request:Request,db=Depends(get_db)):
   return user
  if token.startswith('Bearer '):
   row=db.get(ExtensionToken,hashlib.sha256(token[7:].encode()).hexdigest())
-  if row and row.kind=='access' and row.expires>time.time():return db.get(User,row.user_id)
+  if row and row.kind=='access' and row.expires>time.time():
+   account=db.get(User,row.user_id)
+   if account and not account.needs_profile:return account
   raise HTTPException(401,'Browser connection expired. Pair again from the web app.')
  user=session_user(db,request.cookies.get(COOKIE))
  if not user:raise HTTPException(401,'Please sign in')
@@ -38,14 +40,14 @@ def upload(file:UploadFile=File(...),user=Depends(scan_user),db=Depends(get_db))
  suffix=Path(file.filename or '').suffix.lower()
  if suffix not in EXTENSIONS | IMAGE_EXTENSIONS:raise HTTPException(415,'Choose JPG, PNG, WebP, MP4, MOV, AVI, MKV or WebM.')
  is_image=suffix in IMAGE_EXTENSIONS
- maximum=IMAGE_MAX_BYTES if is_image else 250*1024*1024
+ maximum=IMAGE_MAX_BYTES if is_image else 50_000_000
  path=ROOT/(secrets.token_hex(16)+suffix)
  try:
   total=0
   with path.open('wb') as out:
    while chunk:=file.file.read(1024*1024):
     total+=len(chunk)
-    if total>maximum:raise HTTPException(413,'Maximum image size is 20 MiB.' if is_image else 'Maximum video size is 250 MiB.')
+    if total>maximum:raise HTTPException(413,'Maximum image size is 20 MiB.' if is_image else 'Maximum video size is 50 MB.')
     out.write(chunk)
   if not total:raise HTTPException(422,'The uploaded file is empty.')
   (validate_image if is_image else validate_video)(path)

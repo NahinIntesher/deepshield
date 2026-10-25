@@ -77,6 +77,17 @@ class GoogleIdentity(Base):
  user_id=Column(Integer,ForeignKey('users.id'),unique=True,nullable=False)
  created_at=Column(DateTime,default=dt.datetime.utcnow)
 
+class PendingRegistration(Base):
+ __tablename__='pending_registrations'
+ token_hash=Column(String(64),primary_key=True)
+ username=Column(String(64),unique=True,nullable=False)
+ email=Column(String(254),unique=True,nullable=False)
+ display_name=Column(String(64),nullable=False)
+ password_hash=Column(String(255),nullable=False)
+ expires=Column(Float,nullable=False)
+ sent_at=Column(Float,nullable=False)
+ language=Column(String(2),nullable=False,default='en')
+
 class PaymentReceipt(Base):
  __tablename__='payment_receipts'
  reference_hash=Column(String(64),primary_key=True)

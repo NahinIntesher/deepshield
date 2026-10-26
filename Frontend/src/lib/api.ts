@@ -11,7 +11,7 @@ import {
   LeaderboardEntry
 } from './types';
 
-export const API_BASE = process.env.NEXT_PUBLIC_API_URL || (typeof window!=='undefined'&&['localhost','127.0.0.1'].includes(window.location.hostname)?`${window.location.protocol}//${window.location.hostname}:8000`:'https://deepshield-api-4ujd.onrender.com');
+export const API_BASE = process.env.NEXT_PUBLIC_API_URL || (typeof window!=='undefined'&&['localhost','127.0.0.1'].includes(window.location.hostname)?`${window.location.protocol}//${window.location.hostname}:8000`:'https://api.deepshield.nahin.com.bd');
 
 export function apiFetch(input: RequestInfo | URL, init?: RequestInit) { return fetch(input, {...init, signal: init?.signal ?? AbortSignal.timeout(240_000), credentials: "include"}); }
 

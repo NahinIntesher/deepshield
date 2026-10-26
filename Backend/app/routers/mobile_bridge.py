@@ -1,6 +1,7 @@
 """Single-use, short-lived PKCE exchange for the native browser login."""
 import base64
 import hashlib
+import hmac
 import secrets
 import time
 from fastapi import APIRouter, Depends, HTTPException, Request
@@ -12,6 +13,10 @@ from ..security import current_user, issue_mobile_session
 from .auth import MobileAuthResponse, rate_limit
 
 router = APIRouter(prefix='/api/auth/mobile', tags=['Native browser sign-in'])
+# Ephemeral handoffs deliberately expire across a worker restart. A server-only
+# HMAC key also prevents the stored row from being usable as a browser session
+# by concatenating the public code and PKCE challenge.
+_HANDOFF_KEY = secrets.token_bytes(32)
 
 class HandoffInput(BaseModel):
     challenge: str = Field(pattern=r'^[A-Za-z0-9_-]{43}$')
@@ -21,7 +26,7 @@ class ExchangeInput(BaseModel):
     verifier: str = Field(pattern=r'^[A-Za-z0-9._~-]{43,128}$')
 
 def handoff_hash(code, challenge):
-    return hashlib.sha256(f'mobile-handoff:{code}:{challenge}'.encode()).hexdigest()
+    return hmac.new(_HANDOFF_KEY, f'mobile-handoff:{code}:{challenge}'.encode(), hashlib.sha256).hexdigest()
 
 @router.post('/handoff')
 def handoff(payload: HandoffInput, request: Request, user=Depends(current_user), db=Depends(get_db)):

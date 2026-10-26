@@ -21,6 +21,9 @@ def test_pkce_handoff_is_bound_single_use_and_role_preserving():
         code=c.post('/api/auth/mobile/handoff',json={'challenge':challenge}).json()['code']
         assert c.post('/api/auth/mobile/exchange',json={'code':code,'verifier':'b'*43}).status_code==401
         assert c.get('/api/auth/me',headers={'Authorization':'Bearer dsm_'+code}).status_code==401
+        with TestClient(app) as stranger:
+            stranger.cookies.set('deepshield_session',f'mobile-handoff:{code}:{challenge}')
+            assert stranger.get('/api/auth/me').status_code==401
         exchanged=c.post('/api/auth/mobile/exchange',json={'code':code,'verifier':verifier})
         assert exchanged.status_code==200,exchanged.text
         assert exchanged.json()['user']['role']=='participant'

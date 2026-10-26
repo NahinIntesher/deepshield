@@ -143,11 +143,11 @@ export default function ResearchPage() {const {t}=useLocale();
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200/80 text-brand-700 text-xs font-semibold">
             <Microscope className="w-3.5 h-3.5" />
-            <span><T text="Human-AI Evaluation Protocol" /></span>
+            <span><T text="Research Challenge" /></span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">{" "}<T text="Research Challenge Item #" />{currentIndex + 1}{" "}<T text="of" />{" "}{items.length}
           </h1>
-          <p className="text-slate-600 text-sm">{" "}<T text="Evaluate this sample under laboratory conditions. Your verdict, confidence, and clue tags will be compared with our Swin + DCT + Transformer detector." />{" "}</p>
+          <p className="text-slate-600 text-sm">{" "}<T text="Watch the video and record your answer, confidence and observed clues. Then compare your answer with the model." />{" "}</p>
         </div>
 
         <Link
@@ -170,7 +170,7 @@ export default function ResearchPage() {const {t}=useLocale();
                 className="w-full h-full object-contain"
               />
               <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/90 border border-slate-200 text-[10px] text-slate-800 font-mono shadow-xs">
-                {currentItem.difficulty} &bull; <T>{currentItem.manipulation_type}</T>
+                {t(currentItem.difficulty)} &bull; <T>{currentItem.manipulation_type}</T>
               </div>
             </div>
 
@@ -186,14 +186,14 @@ export default function ResearchPage() {const {t}=useLocale();
           {!submissionResult ? (
             /* Human Evaluation Form */
             <div className="glass-panel p-6 sm:p-8 rounded-3xl space-y-6">
-              <h3 className="text-base font-bold text-slate-900 uppercase tracking-wider">{" "}<T text="Evaluation Protocol Form" />{" "}</h3>
+              <h3 className="text-base font-bold text-slate-900 uppercase tracking-wider">{" "}<T text="Your assessment" />{" "}</h3>
 
               {/* Step 1: Verdict */}
               <div className="space-y-2">
                 <label className="text-xs font-semibold text-slate-700">{" "}<T text="Step 1: Your Verdict (Is this media Real or Fake?)" />{" "}</label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
-                    onClick={() => setHumanVerdict('Real')}
+                    aria-pressed={humanVerdict==='Real'} disabled={submitting} onClick={() => setHumanVerdict('Real')}
                     className={`py-3.5 rounded-2xl border font-bold text-sm transition-all ${
                       humanVerdict === 'Real'
                         ? 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/20'
@@ -201,7 +201,7 @@ export default function ResearchPage() {const {t}=useLocale();
                     }`}
                   >{" "}<T text="REAL" />{" "}</button>
                   <button
-                    onClick={() => setHumanVerdict('Fake')}
+                    aria-pressed={humanVerdict==='Fake'} disabled={submitting} onClick={() => setHumanVerdict('Fake')}
                     className={`py-3.5 rounded-2xl border font-bold text-sm transition-all ${
                       humanVerdict === 'Fake'
                         ? 'bg-rose-600 border-rose-600 text-white shadow-md shadow-rose-500/20'
@@ -214,7 +214,7 @@ export default function ResearchPage() {const {t}=useLocale();
               {/* Step 2: Confidence Rating (1 to 5) */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-slate-700">{" "}<T text="Step 2: Human Confidence Rating (1–5 Likert)" />{" "}</span>
+                  <span className="font-semibold text-slate-700">{" "}<T text="Step 2: How confident are you?" />{" "}</span>
                   <span className="font-mono text-brand-700 font-bold"><T text="Level" />{" "}{humanConfidence}/5</span>
                 </div>
                 <input
@@ -224,9 +224,9 @@ export default function ResearchPage() {const {t}=useLocale();
                   step="1"
                   value={humanConfidence}
                   onChange={(e) => setHumanConfidence(Number(e.target.value))}
-                  className="w-full accent-blue-600"
+                  aria-label={t('Your confidence','আপনি কতটা নিশ্চিত')} className="w-full accent-blue-600"
                 />
-                <div className="flex justify-between text-[10px] text-slate-400">
+                <div className="flex justify-between text-[10px] muted">
                   <span><T text="1 (Pure Guess)" /></span>
                   <span><T text="3 (Moderate)" /></span>
                   <span><T text="5 (Absolute Certainty)" /></span>
@@ -244,16 +244,16 @@ export default function ResearchPage() {const {t}=useLocale();
                     const isSelected = selectedClues.includes(clue);
                     return (
                       <button
-                        key={clue}
+                        key={t(clue)}
                         type="button"
-                        onClick={() => toggleClue(clue)}
+                        aria-pressed={isSelected} disabled={submitting} onClick={() => toggleClue(clue)}
                         className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all border ${
                           isSelected
                             ? 'bg-brand-600 text-white border-brand-600 shadow-xs'
                             : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
                         }`}
                       >
-                        {clue}
+                        {t(clue)}
                       </button>
                     );
                   })}
@@ -266,7 +266,7 @@ export default function ResearchPage() {const {t}=useLocale();
                 disabled={!humanVerdict || submitting}
                 className="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 disabled:opacity-50 text-white font-bold text-xs shadow-md shadow-brand-500/20 transition-all flex items-center justify-center gap-2"
               >
-                <span><T>{submitting ? 'Comparing with Swin + DCT + Transformer...' : 'Submit Human Judgment & Compare AI'}</T></span>
+                <span><T>{submitting ? 'Comparing…' : 'Compare with model'}</T></span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -289,7 +289,7 @@ export default function ResearchPage() {const {t}=useLocale();
                   <span className="font-mono text-xs font-extrabold uppercase tracking-wider">
                     {submissionResult.disagreement_quadrant}{" "}<T text="DISAGREEMENT QUADRANT" />{" "}</span>
                   <h4 className="font-bold text-slate-900 text-base">
-                    {submissionResult.quadrant_description}
+                    <T>{submissionResult.quadrant_description}</T>
                   </h4>
                 </div>
                 <span className="text-xs font-bold px-2 py-1 rounded-md bg-white border border-slate-200 text-slate-800 shadow-xs">{" "}<T text="GT:" />{" "}{submissionResult.ground_truth}

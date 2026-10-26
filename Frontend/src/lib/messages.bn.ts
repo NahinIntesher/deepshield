@@ -24,6 +24,10 @@ export function translateBn(value:string):string {
   const trimmed=value.trim();const translated=messagesBn[trimmed];
   if(translated)return value.replace(trimmed,translated);
   const patterns:[RegExp,(m:RegExpMatchArray)=>string][]=[
+    [/^([\d.]+) seconds into the video$/,m=>`ভিডিওর ${m[1]} সেকেন্ডে`],
+    [/^Original aligned face at ([\d.]+) seconds$/,m=>`${m[1]} সেকেন্ডের অ্যালাইন করা মুখ`],
+    [/^Sample (\d+)$/,m=>`নমুনা ${m[1]}`],
+    [/^source frame (\d+)$/,m=>`মূল ফ্রেম ${m[1]}`],
     [/^Active in (\d+) days$/,m=>`গত ${m[1]} দিনে সক্রিয়`],
     [/^Recorded in the last (\d+) days$/,m=>`গত ${m[1]} দিনের রেকর্ড`],
     [/^Frame (\d+) of (\d+)$/,m=>`${m[2]}টির মধ্যে ${m[1]} নম্বর ফ্রেম`],
@@ -54,3 +58,20 @@ Object.assign(messagesBn,{
 });
 
 Object.assign(messagesBn,{'Not played':'এখনো খেলেননি','Below 70%':'৭০%-এর নিচে','70–89%':'৭০–৮৯%','90% and above':'৯০% বা বেশি'});
+
+Object.assign(messagesBn,{
+ 'Loading research insights…':'রিসার্চের তথ্য লোড হচ্ছে…',
+ 'Recorded research results':'সংরক্ষিত রিসার্চের ফলাফল',
+ 'Research Insights':'রিসার্চের পরিসংখ্যান',
+ 'Compare recorded participant answers with model predictions.':'অংশগ্রহণকারীদের সংরক্ষিত উত্তর ও মডেলের ফলাফলের তুলনা।',
+ 'Sign in':'লগইন','Member sign in':'সদস্য লগইন','Administrator':'অ্যাডমিন',
+ 'No new notifications.':'নতুন কোনো বিজ্ঞপ্তি নেই।'
+});
+
+Object.assign(messagesBn,{'Could not connect to DeepShield. Please try again.':'DeepShield-এর সঙ্গে সংযোগ হয়নি। আবার চেষ্টা করুন।'});
+
+Object.assign(messagesBn,{'My account':'আমার অ্যাকাউন্ট','Export · Premium':'এক্সপোর্ট · Premium','PRACTICE':'অনুশীলন','VIDEO':'ভিডিও','% Acc (':'% সঠিক (','· checkpoint epoch':'· checkpoint epoch'});
+
+Object.assign(messagesBn,{'Research Challenge':'রিসার্চ চ্যালেঞ্জ','Your assessment':'আপনার মূল্যায়ন','Step 2: How confident are you?':'ধাপ ২: কতটা নিশ্চিত?','Watch the video and record your answer, confidence and observed clues. Then compare your answer with the model.':'ভিডিও দেখে আপনার সিদ্ধান্ত, কতটা নিশ্চিত ও কী লক্ষণ দেখেছেন জানান। এরপর মডেলের ফলাফলের সঙ্গে মিলিয়ে দেখুন।'});
+
+Object.assign(messagesBn,{'Comparing…':'তুলনা হচ্ছে…','Compare with model':'মডেলের সঙ্গে তুলনা করুন'});

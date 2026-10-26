@@ -7,6 +7,7 @@ const Context = createContext<{theme: Appearance; setTheme: (value: Appearance) 
 
 export function AppearanceProvider({children}: {children: React.ReactNode}) {
   const [theme, updateTheme] = useState<Appearance>('light');
+  const [ready,setReady] = useState(false);
   useEffect(() => {
     const saved = localStorage.getItem('deepshield-theme');
     if (saved === 'light' || saved === 'dark') updateTheme(saved);
@@ -15,14 +16,16 @@ export function AppearanceProvider({children}: {children: React.ReactNode}) {
       localStorage.setItem('deepshield-theme', migrated);
       updateTheme(migrated);
     }
+    setReady(true);
   }, []);
   useEffect(() => {
+    if(!ready)return;
     const apply = () => {
       document.documentElement.classList.toggle('dark', theme === 'dark');
       document.documentElement.dataset.appearance = theme;
     };
     apply();
-  }, [theme]);
+  }, [theme,ready]);
   function setTheme(value: Appearance) {
     localStorage.setItem('deepshield-theme', value);
     updateTheme(value);

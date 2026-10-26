@@ -2,10 +2,11 @@
 
 A face-based deepfake analysis and media-literacy application.
 
-Backend: https://deepshield-api-4ujd.onrender.com (Render Free, Singapore).
+Frontend: https://deepshield.nahin.com.bd (Vercel).
+Backend: https://api.deepshield.nahin.com.bd (Render Free, Singapore).
 Database: Neon PostgreSQL; private media uses a private Neon storage bucket.
 Inference: the original trained checkpoint runs in the private Hugging Face ZeroGPU Space `nahin-intesher/deepshield-inference`.
-Frontend deployment target: Vercel, root directory `Frontend`, domain `deepshield.nahin.com.bd`.
+Vercel root directory: `Frontend`.
 
 See `Backend/docs/HOSTED_SERVICES.md` for verification and free hosting limits.
 
@@ -63,11 +64,11 @@ Images and videos share the existing daily allowance. Public-link and extension 
 
 bKash recipient: **01815808291**. Default Premium: **BDT 299 / 30 days**. The member pays independently, submits the transaction ID and waits for Admin verification. Approval requires the Admin to confirm the actual recipient, amount and transaction. This is manual payment verification; no gateway, PIN/OTP collection or automatic charge is implemented. Academic demonstration access remains explicitly separate from paid activation.
 
-## Configuration and hosting later
+## Configuration and hosting
 
 See `Backend/.env.example` and `Frontend/.env.local.example`. Set `GOOGLE_CLIENT_ID` only on the backend; the browser receives the public client ID from `/api/auth/providers`. No Google client secret is needed for this flow.
 
-Paths can be moved using `DATA_ROOT`, `MODEL_ROOT`, `CHECKPOINT_PATH`, `VIDEOS_DIR` and `DATABASE_URL`. The model is loaded by the Backend; the `Model` folder is not itself a separately running HTTP service. For separate hosting use a private mounted model/data volume and a database service. Set the frontend's `NEXT_PUBLIC_API_URL` before building. Configure exact HTTPS origins and secure cookies for the final deployment; hosting has not been performed.
+Paths can be moved using `DATA_ROOT`, `MODEL_ROOT`, `CHECKPOINT_PATH`, `VIDEOS_DIR` and `DATABASE_URL`. Hosted prediction runs in the private Hugging Face Space configured by `MODEL_SPACE_ID`; without remote configuration the Backend can load a local checkpoint. The `Model` folder contains weights and deployment source. Set the frontend's `NEXT_PUBLIC_API_URL` before building. The hosted deployment uses exact HTTPS origins, secure cookies and server-side secrets.
 
 More detail:
 

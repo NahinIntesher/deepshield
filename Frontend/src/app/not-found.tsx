@@ -1,2 +1,4 @@
+"use client";
 import Link from 'next/link';
-export default function NotFound(){return <section className="card product-empty"><span className="eyebrow">404</span><h1>Page not found / পেজ পাওয়া যায়নি</h1><p>Check the address or return to your workspace.</p><Link href="/" className="primary-button mt-5">Go to overview / ওভারভিউ</Link></section>}
+import {useLocale} from '@/lib/Locale';
+export default function NotFound(){const {t}=useLocale();return <section className="card product-empty"><span className="eyebrow">404</span><h1>{t('Page not found','পেজ পাওয়া যায়নি')}</h1><p>{t('Check the address or return to the home page.','ঠিকানাটি দেখুন অথবা হোম পেজে ফিরুন।')}</p><Link href="/" className="primary-button mt-5">{t('Back to home','হোমে ফিরুন')}</Link></section>}

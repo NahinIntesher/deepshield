@@ -47,7 +47,7 @@ export default function DashboardPage() {
   }, [activeQuadrant]);
 
   if (loading) {
-    return <div className="text-center py-16 text-slate-500 text-sm"><T text="Computing Academic Metrics..." /></div>;
+    return <div className="text-center py-16 text-slate-500 text-sm"><T text="Loading research insights…" /></div>;
   }
 
   return (
@@ -58,10 +58,10 @@ export default function DashboardPage() {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200/80 text-brand-700 text-xs font-semibold">
             <BarChart3 className="w-3.5 h-3.5" />
-            <span><T text="Academic Performance Analytics" /></span>
+            <span><T text="Recorded research results" /></span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">{" "}<T text="Human vs AI Research Hub" />{" "}</h1>
-          <p className="text-slate-600 text-sm">{" "}<T text="Empirical comparison of human perceptual judgments against the Swin + DCT + Transformer deepfake detector." />{" "}</p>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">{" "}<T text="Research Insights" />{" "}</h1>
+          <p className="text-slate-600 text-sm">{" "}<T text="Compare recorded participant answers with model predictions." />{" "}</p>
         </div>
 
         {/* Thesis Export Buttons */}
@@ -260,9 +260,9 @@ export default function DashboardPage() {
 
         {/* Quadrant Items List */}
         {loadingItems ? (
-          <p className="text-xs text-slate-400 py-6 text-center"><T text="Filtering trials..." /></p>
+          <p className="text-xs muted py-6 text-center"><T text="Filtering trials..." /></p>
         ) : quadrantItems.length === 0 ? (
-          <p className="text-xs text-slate-400 py-6 text-center"><T text="No trials found for this quadrant filter." /></p>
+          <p className="text-xs muted py-6 text-center"><T text="No trials found for this quadrant filter." /></p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {quadrantItems.map((item) => (
@@ -298,7 +298,7 @@ export default function DashboardPage() {
                         <XCircle className="w-3.5 h-3.5 text-rose-600" />
                       )}
                     </p>
-                    <p className="text-[10px] text-slate-400">{" "}<T text="Conf: Level" />{" "}{item.human_confidence}/5 &bull; {item.reaction_time_ms}<T text="ms" />{" "}</p>
+                    <p className="text-[10px] muted">{" "}<T text="Conf: Level" />{" "}{item.human_confidence}/5 &bull; {item.reaction_time_ms}<T text="ms" />{" "}</p>
                   </div>
 
                   <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 space-y-0.5">
@@ -311,13 +311,13 @@ export default function DashboardPage() {
                         <XCircle className="w-3.5 h-3.5 text-rose-600" />
                       )}
                     </p>
-                    <p className="text-[10px] text-slate-400"><T text="Conf:" />{" "}{item.ai_confidence}%</p>
+                    <p className="text-[10px] muted"><T text="Conf:" />{" "}{item.ai_confidence}%</p>
                   </div>
                 </div>
 
                 {item.clue_tags.length > 0 && (
                   <div className="flex flex-wrap gap-1 items-center pt-1">
-                    <Tag className="w-3 h-3 text-slate-400 mr-1" />
+                    <Tag className="w-3 h-3 muted mr-1" />
                     {item.clue_tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}

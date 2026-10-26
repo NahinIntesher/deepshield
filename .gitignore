@@ -26,3 +26,4 @@ Database/library/
 Database/dataset/
 Backend/migration_backup_*/
 .vercel/
+Database/ui-review/

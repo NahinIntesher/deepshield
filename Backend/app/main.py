@@ -73,6 +73,8 @@ app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 # Register routers
 app.include_router(auth.router)
+from .routers import mobile_bridge
+app.include_router(mobile_bridge.router)
 from .routers import google_auth
 app.include_router(google_auth.router)
 app.include_router(game.router)

@@ -24,6 +24,8 @@ export function translateBn(value:string):string {
   const trimmed=value.trim();const translated=messagesBn[trimmed];
   if(translated)return value.replace(trimmed,translated);
   const patterns:[RegExp,(m:RegExpMatchArray)=>string][]=[
+    [/^(.+) — (Real|Fake) \(model prediction\)$/,m=>`${m[1]} — ${m[2]==='Real'?'আসল':'নকল'} (মডেলের পূর্বাভাস)`],
+    [/^Reply: (.+)$/,m=>`উত্তর: ${m[1]}`],
     [/^([\d.]+) seconds into the video$/,m=>`ভিডিওর ${m[1]} সেকেন্ডে`],
     [/^Original aligned face at ([\d.]+) seconds$/,m=>`${m[1]} সেকেন্ডের অ্যালাইন করা মুখ`],
     [/^Sample (\d+)$/,m=>`নমুনা ${m[1]}`],
@@ -75,3 +77,5 @@ Object.assign(messagesBn,{'My account':'আমার অ্যাকাউন্
 Object.assign(messagesBn,{'Research Challenge':'রিসার্চ চ্যালেঞ্জ','Your assessment':'আপনার মূল্যায়ন','Step 2: How confident are you?':'ধাপ ২: কতটা নিশ্চিত?','Watch the video and record your answer, confidence and observed clues. Then compare your answer with the model.':'ভিডিও দেখে আপনার সিদ্ধান্ত, কতটা নিশ্চিত ও কী লক্ষণ দেখেছেন জানান। এরপর মডেলের ফলাফলের সঙ্গে মিলিয়ে দেখুন।'});
 
 Object.assign(messagesBn,{'Comparing…':'তুলনা হচ্ছে…','Compare with model':'মডেলের সঙ্গে তুলনা করুন'});
+
+Object.assign(messagesBn,{'Analysis ready':'বিশ্লেষণ সম্পন্ন','File could not be analyzed':'ফাইল বিশ্লেষণ করা যায়নি','Subscription request approved':'সাবস্ক্রিপশনের অনুরোধ অনুমোদিত','Subscription request rejected':'সাবস্ক্রিপশনের অনুরোধ বাতিল','upload':'আপলোড','link':'লিংক','sample':'নমুনা'});

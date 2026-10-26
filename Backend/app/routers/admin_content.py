@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 from typing import Literal
 
-from fastapi import APIRouter,Depends,File,Form,HTTPException,UploadFile
+from fastapi import APIRouter,Depends,File,Form,HTTPException,UploadFile,BackgroundTasks
 from pydantic import BaseModel,ConfigDict,Field,field_validator
 
 from ..activity import audit
@@ -100,7 +100,7 @@ def library(db=Depends(get_db)):
     return [media_view(r) for r in db.query(ResearchChallengeItem).order_by(ResearchChallengeItem.id.desc())]
 
 @router.post('/library',status_code=201)
-def create_media(file:UploadFile=File(...),title:str=Form(...),ground_truth:Literal['Real','Fake']=Form(...),description:str=Form(''),difficulty:str=Form('Not rated'),actor=Depends(admin_user),db=Depends(get_db)):
+def create_media(background_tasks:BackgroundTasks,file:UploadFile=File(...),title:str=Form(...),ground_truth:Literal['Real','Fake']=Form(...),description:str=Form(''),difficulty:str=Form('Not rated'),actor=Depends(admin_user),db=Depends(get_db)):
     from pydantic import ValidationError
     try:metadata=MediaMetadata(title=title,ground_truth=ground_truth,description=description,difficulty=difficulty)
     except ValidationError:raise HTTPException(422,'Check the video title, label and difficulty.')
@@ -120,7 +120,10 @@ def create_media(file:UploadFile=File(...),title:str=Form(...),ground_truth:Lite
         persist(path)
         token=hashlib.sha256(('library/'+path.relative_to(DATA_ROOT/'library').as_posix()).encode()).hexdigest()[:24]
         row=ResearchChallengeItem(title=metadata.title,description=metadata.description,ground_truth=ground_truth,difficulty=metadata.difficulty,media_type='video',media_path='/api/media/'+token,manipulation_type='Not annotated',visual_cues='[]',archived=False)
-        db.add(row);db.flush();audit(db,actor.id,'library_video_created',str(row.id));db.commit();return media_view(row)
+        db.add(row);db.flush();audit(db,actor.id,'library_video_created',str(row.id));db.commit()
+        from ..services.media_playback import prepare_in_background
+        background_tasks.add_task(prepare_in_background,path)
+        return media_view(row)
     except Exception:db.rollback();path.unlink(missing_ok=True);raise
     finally:file.file.close()
 

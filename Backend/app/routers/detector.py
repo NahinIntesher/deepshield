@@ -3,7 +3,7 @@ from fastapi import Depends
 import tempfile, json
 from ..models.db_models import DetectionRecord
 from pathlib import Path
-from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
+from fastapi import APIRouter, UploadFile, File, Depends, HTTPException, Request
 from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 from ..database import get_db
@@ -21,15 +21,18 @@ def detector_service():
             'temporary_remote_media':enabled(),'max_video_bytes':50_000_000,'max_image_bytes':20*1024*1024}
 
 @router.get('/media/{token}')
-def serve_video(token: str):
+@router.head('/media/{token}')
+def serve_video(token: str, request: Request):
     entry = video_index().get(token)
     if entry is None:
         raise HTTPException(404, 'Video not found')
     try:
-        playback = browser_video(entry[0])
+        from ..services.media_playback import playback_response
+        return playback_response(entry[0], request)
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(422, 'Could not prepare video playback. Check FFmpeg and the source file.') from exc
-    return FileResponse(playback, media_type='video/mp4')
 
 @router.get('/detector/presets')
 def get_presets(db: Session = Depends(get_db)):

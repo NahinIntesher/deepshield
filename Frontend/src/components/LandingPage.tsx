@@ -8,7 +8,7 @@ export default function LandingPage(){
  const {t}=useLocale();
  const features=[
   [ScanFace,t('Image & video analysis','ছবি ও ভিডিও বিশ্লেষণ'),t('Upload a file or use a supported public video link. Review the prediction and visual explanation.','ফাইল আপলোড করুন অথবা সাপোর্ট করা পাবলিক ভিডিও লিংক দিন। মডেলের ফলাফল ও ভিজ্যুয়াল ব্যাখ্যা দেখুন।')],
-  [History,t('Private scan history','ব্যক্তিগত স্ক্যান হিস্ট্রি'),t('Revisit your analyses. Delete a scan to remove its file and result.','আগের বিশ্লেষণ ও ফলাফল এক জায়গায় রাখুন। প্রয়োজন হলে ফাইলসহ স্ক্যান মুছে দিন।')],
+  [History,t('Private scan history','ব্যক্তিগত স্ক্যান হিস্ট্রি'),t('Revisit your analyses. Delete a scan to remove its file and result.','আগের বিশ্লেষণ ও ফলাফল এক জায়গায় রাখুন। প্রয়োজন হলে ফাইলসহ স্ক্যান ডিলিট করুন।')],
   [BookOpen,t('Learn & practise','শিখুন ও চর্চা করুন'),t('Follow short lessons, take quizzes and practise spotting manipulated videos, alone or with friends.','ছোট ছোট পাঠ ও কুইজে শিখুন। একা বা বন্ধুদের সঙ্গে ভিডিও চেনার চর্চা করুন।')],
   [FlaskConical,t('Human–AI research','মানুষ ও AI-এর তুলনা'),t('Earn research eligibility through practice, then compare independent judgments with the model.','চর্চার মাধ্যমে রিসার্চে অংশ নেওয়ার যোগ্যতা অর্জন করুন। এরপর নিজের সিদ্ধান্তের সঙ্গে মডেলের ফলাফল তুলনা করুন।')],
  ] as const;
@@ -20,7 +20,7 @@ export default function LandingPage(){
   <section id="how-it-works" className="landing-section landing-steps-section" aria-labelledby="steps-title"><div className="landing-section-heading"><h2 id="steps-title">{t('From upload to explanation','আপলোড থেকে ফলাফল')}</h2></div><ol className="landing-steps">{[
    [Upload,t('Choose your file','ফাইল বেছে নিন'),t('Upload a face image or a video. Supported public video links are available too.','মুখ আছে এমন ছবি বা ভিডিও দিন। সাপোর্ট করা পাবলিক ভিডিও লিংকও ব্যবহার করতে পারেন।')],
    [ScanFace,t('Run the analysis','বিশ্লেষণ করুন'),t('The detector samples face frames and runs the trained model. Follow the scan from your history.','ডিটেক্টর মুখের ফ্রেম বেছে নিয়ে প্রশিক্ষিত মডেলে বিশ্লেষণ করে। স্ক্যান হিস্ট্রিতে কাজের অবস্থা দেখতে পারবেন।')],
-   [BookOpen,t('Review the result','ফলাফল বুঝে নিন'),t('Read the prediction, inspect the visual explanation and consider the source and context.','মডেলের ফলাফল ও ভিজ্যুয়াল ব্যাখ্যা দেখুন। পাশাপাশি ফাইলের উৎস ও প্রেক্ষাপটও বিবেচনা করুন।')],
+   [BookOpen,t('Review the result','ফলাফল বুঝে নিন'),t('Read the prediction, inspect the visual explanation and consider the source and context.','মডেলের ফলাফল ও ভিজ্যুয়াল ব্যাখ্যা দেখুন। পাশাপাশি ফাইলের সোর্স ও প্রেক্ষাপটও বিবেচনা করুন।')],
   ].map(([Icon,title,description]:any,i)=><li key={title}><span className="landing-step-number">0{i+1}</span><Icon size={23}/><h3>{title}</h3><p>{description}</p></li>)}</ol></section>
   <section className="landing-start"><div><h2>{t('Create your DeepShield account','DeepShield অ্যাকাউন্ট খুলুন')}</h2><p>{t('Create a free account to save and review your analyses.','বিনামূল্যে অ্যাকাউন্ট খুলে আপনার বিশ্লেষণ সংরক্ষণ করুন।')}</p></div><Link href="/login?mode=signup" className="primary-button">{t('Create account','অ্যাকাউন্ট খুলুন')}<ArrowUpRight size={18}/></Link></section>
   <footer className="landing-footer"><Link href="/"><Logo/></Link><span>© {new Date().getFullYear()} DeepShield</span><Link href="/admin/login">{t('Administrator sign in','অ্যাডমিন লগইন')}</Link></footer>

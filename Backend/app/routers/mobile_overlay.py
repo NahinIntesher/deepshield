@@ -32,10 +32,16 @@ except ImportError:
 from .detector import save_detection
 
 router = APIRouter(prefix='/api/integrations/mobile-overlay', tags=['Android live screen protection'])
-SOURCES = {'YouTube', 'Facebook', 'Instagram'}
+SOURCES = {'YouTube', 'Facebook', 'Instagram', 'TikTok', 'Other'}
 FRAME_COUNT = 16
 MAX_FRAME_BYTES = 500_000
 MAX_TOTAL_BYTES = 8_000_000
+
+
+def _notify_fake_result(db, user, source, result):
+    if PRODUCT_BACKEND and result.get('verdict') == 'Fake':
+        notify(db, user.id, 'Possible deepfake', f'{source}: Check the original before trusting or sharing.')
+        db.commit()
 
 
 def _decode_frames(images: List[bytes]):
@@ -63,10 +69,10 @@ def _decode_frames(images: List[bytes]):
     return decoded
 
 
-def _temporary_video(frames, path: Path):
+def _temporary_video(frames, path: Path, sample_interval_ms: int = 1000):
     """Compose an MJPEG AVI that cv2.VideoCapture can read using the existing pipeline."""
     height, width = frames[0].shape[:2]
-    writer = cv2.VideoWriter(str(path), cv2.VideoWriter_fourcc(*'MJPG'), 1.0, (width, height))
+    writer = cv2.VideoWriter(str(path), cv2.VideoWriter_fourcc(*'MJPG'), 1000.0/sample_interval_ms, (width, height))
     if not writer.isOpened():
         raise HTTPException(503, 'Video encoder is unavailable on this backend')
     try:
@@ -84,11 +90,14 @@ def _temporary_video(frames, path: Path):
 def scan_mobile_overlay(
     source: str,
     frames: List[UploadFile] = File(...),
+    sample_interval_ms: int = 1000,
     user=Depends(current_user),
     db: Session = Depends(get_db),
 ):
     if source not in SOURCES:
-        raise HTTPException(422, 'Choose YouTube, Facebook, or Instagram')
+        raise HTTPException(422, 'Choose a supported social app')
+    if sample_interval_ms not in (500, 1000):
+        raise HTTPException(422, 'Use a 500 ms or 1000 ms frame interval')
     # Limits apply before model inference. No permission to read another user's scans.
     require_scan_quota(db, user)
     if len(frames) != FRAME_COUNT:
@@ -115,12 +124,11 @@ def scan_mobile_overlay(
         decoded = _decode_frames(data)
         with tempfile.TemporaryDirectory(prefix='ds-mobile-overlay-') as temp:
             path = Path(temp) / 'screen_capture.avi'
-            _temporary_video(decoded, path)
+            _temporary_video(decoded, path, sample_interval_ms)
             result = analyze_video(path)
             # Only the model result is added to scan history, never the raw screen video.
             saved=save_detection(db, user, f'Android Live Guard: {source}', result)
-            if PRODUCT_BACKEND:
-                notify(db,user.id,'Live Guard analysis ready',f'{source}: '+result['verdict']+' (model prediction)');db.commit()
+            _notify_fake_result(db, user, source, result)
             return saved
     except Exception:
         if charge_id:
@@ -129,4 +137,6 @@ def scan_mobile_overlay(
             if charge:charge.charged=False;db.commit()
         raise
     finally:
+        for item in frames:
+            item.file.close()
         MODEL_QUEUE.release()

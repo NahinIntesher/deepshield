@@ -98,3 +98,5 @@ Object.assign(messagesBn,{
  'Less sensitive':'Sensitivity কম','More sensitive':'Sensitivity বেশি',
  'Same crop, with highlighted sensitive areas.':'একই face crop-এর sensitivity map।'
 });
+
+Object.assign(messagesBn,{'Possible deepfake':'ভিডিওটি নকল হতে পারে',...Object.fromEntries(['YouTube','Facebook','Instagram','TikTok','Other'].map(source=>[`${source}: Check the original before trusting or sharing.`,`${source==='Other'?'বেছে দেওয়া অ্যাপ':source}: বিশ্বাস বা শেয়ার করার আগে আসল ভিডিওটি খুঁজে দেখুন।`]))});

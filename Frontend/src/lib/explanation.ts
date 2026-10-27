@@ -3,12 +3,20 @@ import type {ShapEvidence,ShapRegion} from './explanationTypes';
 
 export function validShap(result:DetectionResult):ShapEvidence|null{
  const s=result.shap_explanation;if(!s||s.method!=='SHAP'||s.target_class!==result.verdict)return null;
- for(const g of [s.branches,s.frames,s.spatial]){
-  if(!g)continue;
-  if(!Array.isArray(g.values)||g.values.length!==g.feature_names.length||!g.values.every(Number.isFinite)||![g.base_value,g.output_value].every(Number.isFinite))return null;
+ for(const [index,g] of [s.branches,s.frames,s.spatial].entries()){
+  if(index===1&&g==null)continue;
+  if(!g||!Array.isArray(g.feature_names)||!Array.isArray(g.values)||g.values.length!==g.feature_names.length||g.values.length>64||!g.values.every(v=>typeof v==='number'&&Number.isFinite(v))||![g.base_value,g.output_value].every(v=>typeof v==='number'&&Number.isFinite(v)))return null;
   if(Math.abs(g.base_value+g.values.reduce((a,b)=>a+b,0)-g.output_value)>0.001)return null;
  }
- if(!s.spatial.regions.length||!s.spatial.regions.every(r=>Number.isFinite(r.masked_class_score_percent)&&r.masked_class_score_percent>=0&&r.masked_class_score_percent<=100))return null;
+ const spatial=s.spatial;
+ const image=(value:unknown)=>typeof value==='string'&&value.startsWith('data:image/png;base64,')&&value.length<=1000000;
+ if(!spatial||!Array.isArray(spatial.regions)||spatial.regions.length!==4||!image(spatial.preview?.original))return null;
+ const ids=new Set<string>();
+ for(const r of spatial.regions){
+  if(!r||!['eyes','nose','mouth','other'].includes(r.id)||ids.has(r.id)||!Number.isFinite(r.shap_value)||!Number.isFinite(r.masked_class_score_percent)||r.masked_class_score_percent<0||r.masked_class_score_percent>100||!image(r.preview))return null;
+  const index=spatial.feature_names.indexOf(r.id);if(index<0||Math.abs(r.shap_value-spatial.values[index])>0.001)return null;
+  ids.add(r.id);
+ }
  return s;
 }
 export function regionName(id:string,bn:boolean){return (bn?{eyes:'চোখের চারপাশ',nose:'নাকের আশপাশ',mouth:'ঠোঁটের আশপাশ',other:'মুখের ছবির বাকি অংশ'}:{eyes:'Around the eyes',nose:'Around the nose',mouth:'Mouth and lower face',other:'Rest of the face crop'})[id as ShapRegion['id']]||(bn?'মুখের অংশ':'Face area')}

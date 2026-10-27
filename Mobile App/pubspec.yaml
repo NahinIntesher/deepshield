@@ -1,0 +1,41 @@
+name: deepshield_mobile
+description: "DeepShield — media verification, learning and research."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.9.0
+  file_picker: ^13.3.0
+  flutter_secure_storage: ^11.2.0
+  shared_preferences: ^2.5.3
+  video_player: ^2.10.0
+  url_launcher: ^6.3.2
+  path_provider: ^2.1.5
+  share_plus: ^13.3.1
+  web_socket_channel: ^3.0.3
+  app_links: ^6.4.1
+  crypto: ^3.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  integration_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/copy/bn.json
+  fonts:
+    - family: Quicksand
+      fonts:
+        - asset: assets/fonts/Quicksand.ttf
+    - family: BalooDa2
+      fonts:
+        - asset: assets/fonts/BalooDa2.ttf

@@ -112,7 +112,7 @@ export default function ResearchPage() {const {t}=useLocale();
           <Lock className="w-8 h-8" />
         </div>
         <div className="space-y-2">
-          <h2 className="text-3xl font-extrabold text-slate-900"><T text="Research Challenge Locked" /></h2>
+          <h1 className="text-3xl font-extrabold text-slate-900"><T text="Research Challenge Locked" /></h1>
           <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">{" "}<T text="The Research Challenge is an academic data-collection experiment reserved for top-performing participants. Achieve" />{" "}<strong><T text="≥ 90% accuracy" /></strong>{" "}<T text="and" />{" "}<strong><T text="at least 5,000 points" /></strong>{" "}<T text="in the Real vs Fake game. Your current target and progress are shown in the arena." />{" "}</p>
         </div>
 

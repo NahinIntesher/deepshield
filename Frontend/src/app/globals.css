@@ -3041,3 +3041,37 @@ html:not(.dark) .chart-legend span:nth-child(3){color:#795815}
 .shap-frame-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin:20px 0}.shap-frame-list button{display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px;min-width:0;border:1px solid var(--line);border-radius:14px;background:var(--soft);text-align:center}.shap-frame-list button[aria-pressed=true]{border:2px solid var(--accent)}.shap-frame-list img{width:90px;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:9px}.shap-frame-list small{font-size:12px;line-height:1.5;color:var(--muted)}
 @media(max-width:600px){.plain-explanation{font-size:18px}.plain-explanation .explanation-lead{font-size:20px}.explanation-comparison{gap:12px}.explanation-comparison figcaption{font-size:14px}.explanation-region-options button{flex:1 1 120px}.explanation-proof>div{grid-template-columns:1fr;gap:3px}.plain-explanation .section-heading>*{max-width:100%}.explanation-technical>summary h2{font-size:18px}.explanation-observation{padding:16px}}
 @media(max-width:350px){.explanation-comparison{grid-template-columns:1fr;max-width:260px}}
+
+/* Admin data and open forms must remain readable inside narrow cards. */
+.activity-chart-fit{display:block;height:205px;min-height:205px;overflow:visible;background:none;border:0}
+.activity-chart-fit svg{display:block;max-width:100%;font-family:inherit}
+.admin-content :is(.form-label,.billing-form,.ticket-card,.training-readiness,.pipeline-steps>div){min-width:0;overflow-wrap:anywhere}
+.admin-content :is(.primary-button,.secondary-button,.danger-button){max-width:100%;white-space:normal;text-align:center;min-height:44px}
+.admin-content :is(.ticket-message,.ticket-card strong,.training-readiness p){font-size:15px;line-height:1.7}
+.admin-content .metric-bars .flex{gap:14px;align-items:flex-start}
+.admin-content .metric-bars strong,.admin-content .account-name svg{flex-shrink:0}
+.admin-content .account-name svg{margin-top:3px}
+.admin-content .section-heading{flex-direction:row;align-items:flex-start}
+.admin-content .section-heading>h2{flex:1;min-width:0}
+@media(max-width:760px){
+ .admin-content .field,.admin-content .search-field input{font-size:16px}
+ .admin-content .pipeline-steps{grid-template-columns:minmax(0,1fr)}
+ .admin-content .pipeline-steps>div{display:flex;gap:14px;align-items:center;font-size:15px}
+ .admin-content .pipeline-steps span{margin:0;flex-shrink:0}
+ .admin-content .billing-form .flex,.admin-content .history-entry>.flex{flex-wrap:wrap}
+ .admin-content .content-fieldset{padding:14px}
+}
+@media(max-width:480px){
+ .admin-content .responsive-table tbody{grid-template-columns:minmax(0,1fr)}
+ .admin-content .responsive-table tbody tr{grid-template-columns:minmax(0,1fr);gap:18px;padding:18px}
+ .admin-content .responsive-table td{grid-column:1!important}
+ .admin-content .mobile-cell-label{font-size:14px;line-height:1.5}
+ .admin-content .mobile-cell-value{font-size:16px;line-height:1.6}
+ .admin-content .account-name strong{font-size:17px}
+ .admin-content .history-toolbar{display:grid;grid-template-columns:minmax(0,1fr)}
+ .admin-content .history-toolbar :is(.search-field,.filter-field,button){width:100%;max-width:100%}
+ .admin-content .section-heading>.primary-button,.admin-content .section-heading>.secondary-button{width:100%}
+ .admin-content .pagination>div{display:flex;width:100%}
+ .admin-content .pagination>div>button{flex:1;min-width:0}
+ .admin-content .account-form-full.flex>button{flex:1 1 120px}
+}

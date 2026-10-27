@@ -151,6 +151,17 @@ class ModelManager:
                     notes.append(xai_error)
                     if self.device.type == 'cuda':
                         torch.cuda.empty_cache()
+            shap_result, shap_error = None, None
+            if explain:
+                try:
+                    from .shap_explanation import explain_prediction
+                    shap_result = explain_prediction(model, x, raw, freq, prepared, cls, classify_features)
+                except Exception as exc:
+                    # Additional explanations must never replace a real prediction
+                    # with a guessed verdict or silently fabricated attribution.
+                    shap_error = f'SHAP explanation unavailable: {type(exc).__name__}: {str(exc)[:200]}'
+                    if self.device.type == 'cuda':
+                        torch.cuda.empty_cache()
             return {
                 'media_type': prepared.media_type,
                 'analysis_mode': 'repeated_still_experimental' if is_image else 'video_sequence',
@@ -166,6 +177,8 @@ class ModelManager:
                 'frame_indices': prepared.source_indices, 'detected_frames': prepared.detected_frames,
                 'repeated_frames': prepared.repeated_frames, 'xai_error': xai_error,
                 'frame_details':frame_details,'focus_frame':focus_frame,
+                'shap_explanation': shap_result, 'shap_error': shap_error,
+                'explanation_method': ('input_gradient_and_shap' if frame_details else 'shap') if shap_result else ('input_gradient' if frame_details else None),
             }
 
 model_manager = ModelManager()

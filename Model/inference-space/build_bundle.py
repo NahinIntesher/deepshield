@@ -16,7 +16,7 @@ FACE_PROVIDER='CPUExecutionProvider'
 NUM_FRAMES=16
 MODEL_NAME='Swin-Small + DCT + Temporal Transformer'
 '''
-FILES = ['model_manager.py','swin_model.py','video_processor.py','upload_validation.py','xai_engine.py']
+FILES = ['model_manager.py','swin_model.py','video_processor.py','upload_validation.py','xai_engine.py','shap_explanation.py']
 
 with zipfile.ZipFile(ROOT/'runtime.zip','w',compression=zipfile.ZIP_DEFLATED) as bundle:
     bundle.writestr('engine/__init__.py','')

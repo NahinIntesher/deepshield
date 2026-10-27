@@ -3,6 +3,7 @@ spaces
 torch==2.8.0
 torchvision==0.23.0
 timm>=1.0,<2
+shap==0.48.0
 numpy>=1.26,<2
 opencv-python-headless>=4.8,<4.12
 pillow>=10

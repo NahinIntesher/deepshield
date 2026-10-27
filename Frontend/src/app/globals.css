@@ -3012,3 +3012,32 @@ html:not(.dark) .chart-legend span:nth-child(3){color:#795815}
 .heatmap-colour-key{display:flex;gap:3px;height:14px}.heatmap-colour-key i{flex:1;border-radius:3px}.heatmap-scale-labels{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin-top:8px}.heatmap-expand{margin-left:auto}.heatmap-reading-note{line-height:1.8}
 .heatmap-dialog{width:min(1100px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--surface);color:var(--foreground);overflow:auto;overscroll-behavior:contain}.heatmap-dialog::backdrop{background:#05070bd9}.heatmap-dialog-heading{display:flex;justify-content:space-between;align-items:center;gap:16px}.heatmap-dialog-heading h2{font-size:24px}
 @media(max-width:600px){.heatmap-compare{grid-template-columns:1fr;gap:10px}.heatmap-viewport{max-height:420px}.heatmap-display-controls{grid-template-columns:1fr;gap:18px}.heatmap-toolbar{align-items:stretch}.heatmap-toolbar .auth-tabs{width:100%}.heatmap-expand{margin-left:0;width:100%}.heatmap-dialog{padding:18px;width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}.heatmap-dialog-heading h2{font-size:21px}}
+/* Plain explanations use measured model outputs with progressive detail. */
+.plain-explanation{font-size:18px;line-height:1.75;min-width:0}
+.plain-explanation .explanation-lead{font-size:21px;line-height:1.65;font-weight:600;max-width:80ch;margin:16px 0 24px}
+.plain-explanation h3{font-size:21px;line-height:1.4;font-weight:700}
+.explanation-evidence-heading{display:flex;align-items:flex-start;gap:12px;margin:26px 0 12px}
+.explanation-evidence-heading svg{flex-shrink:0;margin-top:4px;color:var(--accent)}
+.explanation-region-options{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.explanation-region-options button{min-height:48px;white-space:normal;text-align:center;max-width:100%}
+.explanation-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:780px;margin:24px auto}
+.explanation-comparison figure{min-width:0;margin:0}
+.explanation-comparison img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:var(--soft);border:1px solid var(--line);border-radius:16px}
+.explanation-comparison figcaption{font-size:16px;font-weight:700;padding:12px 0;text-align:center}
+.explanation-observation{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px;margin:20px 0}
+.explanation-observation strong{display:block;margin-bottom:8px;font-size:20px}
+.explanation-boundary{display:flex;align-items:flex-start;gap:12px;font-size:17px;color:var(--muted);margin:18px 0}
+.explanation-boundary svg{flex-shrink:0;margin-top:5px}
+.explanation-method,.explanation-next{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.explanation-method>summary,.explanation-score-details>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;min-height:48px;font-size:17px;font-weight:700;list-style:none}
+.explanation-method>div{margin-top:18px}.explanation-method p{font-size:17px}
+.shap-value-list{display:grid;gap:12px}.shap-value-list>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 16px;padding:12px 0;border-bottom:1px solid var(--line)}.shap-value-list small{grid-column:1/-1;color:var(--muted)}
+.explanation-proof{font-size:15px}.explanation-proof>div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;padding:10px 0}.explanation-proof dt{color:var(--muted)}.explanation-proof dd{margin:0;overflow-wrap:anywhere}
+.explanation-next ol{padding-left:24px;margin:14px 0 22px}.explanation-next li{padding:6px 0 6px 6px}
+.explanation-technical>summary{display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;min-height:48px;list-style:none}.explanation-technical>summary h2{font-size:20px}.explanation-technical>summary svg{flex-shrink:0}.explanation-technical>summary::-webkit-details-marker,.explanation-method>summary::-webkit-details-marker,.explanation-score-details>summary::-webkit-details-marker{display:none}
+.explanation-score-details{margin-top:18px}.explanation-score-details .probability-track{margin-top:16px}.explanation-score-values{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:12px 0;font-size:17px}
+.explanation-score-details .notice{display:flex;align-items:flex-start;gap:10px}.explanation-score-details .notice svg{flex-shrink:0;margin-top:3px}
+.shap-contributions{display:grid;gap:18px;margin:20px 0}.shap-contribution-label{display:flex;justify-content:space-between;gap:14px}.shap-contribution-label span{min-width:0}.shap-contribution-track{position:relative;height:12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;margin:8px 0}.shap-contribution-track:after{content:'';position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted)}.shap-contribution-track i{position:absolute;top:0;bottom:0;border-radius:5px}.shap-contribution-track .support{background:var(--accent)}.shap-contribution-track .oppose{background:#b77724}.shap-contributions small{color:var(--muted)}
+.shap-frame-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin:20px 0}.shap-frame-list button{display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px;min-width:0;border:1px solid var(--line);border-radius:14px;background:var(--soft);text-align:center}.shap-frame-list button[aria-pressed=true]{border:2px solid var(--accent)}.shap-frame-list img{width:90px;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:9px}.shap-frame-list small{font-size:12px;line-height:1.5;color:var(--muted)}
+@media(max-width:600px){.plain-explanation{font-size:18px}.plain-explanation .explanation-lead{font-size:20px}.explanation-comparison{gap:12px}.explanation-comparison figcaption{font-size:14px}.explanation-region-options button{flex:1 1 120px}.explanation-proof>div{grid-template-columns:1fr;gap:3px}.plain-explanation .section-heading>*{max-width:100%}.explanation-technical>summary h2{font-size:18px}.explanation-observation{padding:16px}}
+@media(max-width:350px){.explanation-comparison{grid-template-columns:1fr;max-width:260px}}

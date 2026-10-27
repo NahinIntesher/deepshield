@@ -109,6 +109,9 @@ class ResearchSubmissionResponse(BaseModel):
 
 # --- AI Detector Schemas ---
 class DetectionResult(BaseModel):
+    shap_explanation: Optional[Dict[str, Any]] = None
+    shap_error: Optional[str] = None
+    explanation_method: Optional[str] = None
     media_type: str = 'video'
     analysis_mode: str = 'video_sequence'
     experimental: bool = False

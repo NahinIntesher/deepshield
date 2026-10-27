@@ -31,7 +31,7 @@ def enqueue(db,user,source,name,url=None,path=None):
  with lock:
   stat=CHECKPOINT_PATH.stat() if CHECKPOINT_PATH.is_file() else None
   signature=remote_inference.expected_id() if remote_inference.enabled() else (stat.st_size,stat.st_mtime_ns) if stat else 'missing'
-  key=hashlib.sha256((str(user.id)+str(url or digest(path))+str(signature)).encode()).hexdigest()
+  key=hashlib.sha256((str(user.id)+str(url or digest(path))+str(signature)+'explanation-shap-v1').encode()).hexdigest()
   old=db.query(Scan).filter(Scan.cache_key==key,Scan.created_at>now()-dt.timedelta(hours=1),Scan.state.in_(['queued','downloading','processing','completed'])).first()
   if old:
    if path:Path(path).unlink(missing_ok=True)

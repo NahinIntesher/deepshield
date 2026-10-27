@@ -1,3 +1,4 @@
+import type {ShapEvidence} from './explanationTypes';
 export interface User {
   id: number;
   username: string;
@@ -66,6 +67,9 @@ export interface ResearchSubmissionResult {
 }
 
 export interface DetectionResult {
+  shap_explanation?:ShapEvidence|null;
+  shap_error?:string|null;
+  explanation_method?:string|null;
   media_type?: 'video' | 'image';
   analysis_mode?: 'video_sequence' | 'repeated_still_experimental';
   experimental?: boolean;

@@ -207,8 +207,8 @@ class _ModelExplanationState extends State<ModelExplanation> {
                     'মডেল এটিকে আসল হিসেবে বেছে নিয়েছে। তবুও মানুষটি কে বা তাঁর কথা সত্য কি না, এই পরীক্ষা তা যাচাই করে না।',
                   ),
             style: const TextStyle(
-              fontSize: 19,
-              height: 1.65,
+              fontSize: 17,
+              height: 1.55,
               fontWeight: FontWeight.w600,
             ),
           ),

@@ -3089,6 +3089,7 @@ html:not(.dark) .chart-legend span:nth-child(3){color:#795815}
 .form-label>small{display:block;font-size:14px;font-weight:400;line-height:1.6;color:var(--muted)}
 .field{border-radius:12px;min-height:52px;border-color:var(--control-line);padding:13px 15px}
 .field:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.auth-form .field:focus,.auth-form .field:focus-visible{outline:none;outline-offset:0;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
 .auth-form form>label{display:grid;gap:8px;min-width:0;line-height:1.5}
 .auth-form h1{font-size:34px;line-height:1.2;margin-bottom:12px}
 .auth-single .auth-form{width:min(100%,540px);padding:36px}

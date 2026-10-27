@@ -101,15 +101,18 @@ class _AuthPageState extends State<AuthPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(height: 28),
-                  Icon(
-                    widget.onboarding
-                        ? Icons.person_outline
-                        : admin
-                        ? Icons.admin_panel_settings_outlined
-                        : Icons.shield_outlined,
-                    size: 58,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                  if (!widget.onboarding && !admin)
+                    const Center(child: BrandMark(height: 58))
+                  else
+                    Icon(
+                      widget.onboarding
+                          ? Icons.person_outline
+                          : admin
+                          ? Icons.admin_panel_settings_outlined
+                          : Icons.shield_outlined,
+                      size: 58,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   const SizedBox(height: 24),
                   PageTitle(
                     widget.onboarding

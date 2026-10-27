@@ -29,16 +29,16 @@ ThemeData shieldTheme(bool dark, bool bn) {
         ? const Color(0xff101113)
         : const Color(0xfff5f7f4),
     textTheme: TextTheme(
-      bodyLarge: const TextStyle(fontSize: 17, height: 1.5),
-      bodyMedium: const TextStyle(fontSize: 16, height: 1.45),
+      bodyLarge: const TextStyle(fontSize: 16, height: 1.5),
+      bodyMedium: const TextStyle(fontSize: 15, height: 1.45),
       titleLarge: const TextStyle(
-        fontSize: 25,
+        fontSize: 22,
         fontWeight: FontWeight.w700,
         height: 1.25,
       ),
-      titleMedium: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+      titleMedium: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
       headlineMedium: const TextStyle(
-        fontSize: 31,
+        fontSize: 26,
         fontWeight: FontWeight.w700,
         height: 1.18,
       ),
@@ -87,7 +87,7 @@ ThemeData shieldTheme(bool dark, bool bn) {
         foregroundColor: Colors.white,
         minimumSize: const Size(48, 52),
         padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
-        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+        textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     ),
@@ -107,6 +107,78 @@ ThemeData shieldTheme(bool dark, bool bn) {
   );
 }
 
+/// The same shield, play mark and mint check paths as the website Logo.tsx.
+class BrandMark extends StatelessWidget {
+  final double height;
+  const BrandMark({super.key, this.height = 38});
+  @override
+  Widget build(BuildContext context) => ExcludeSemantics(
+    child: CustomPaint(
+      size: Size(height * 40 / 44, height),
+      painter: _BrandPainter(Theme.of(context).colorScheme.onSurface),
+    ),
+  );
+}
+
+class _BrandPainter extends CustomPainter {
+  final Color color;
+  _BrandPainter(this.color);
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.save();
+    canvas.scale(size.width / 40, size.height / 44);
+    final fill = Path()
+      ..moveTo(20, 2)
+      ..lineTo(36, 8)
+      ..lineTo(36, 21)
+      ..cubicTo(36, 31, 27, 38, 20, 42)
+      ..cubicTo(13, 38, 4, 31, 4, 21)
+      ..lineTo(4, 8)
+      ..close();
+    canvas.drawPath(fill, Paint()..color = color.withValues(alpha: .16));
+    final border = Path()
+      ..moveTo(20, 3)
+      ..lineTo(35, 9)
+      ..lineTo(35, 21)
+      ..cubicTo(35, 30, 27, 37, 20, 41)
+      ..cubicTo(13, 37, 5, 30, 5, 21)
+      ..lineTo(5, 9)
+      ..close();
+    canvas.drawPath(
+      border,
+      Paint()
+        ..color = color
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2,
+    );
+    canvas.drawPath(
+      Path()
+        ..moveTo(16, 14)
+        ..lineTo(28, 22)
+        ..lineTo(16, 30)
+        ..close(),
+      Paint()..color = color,
+    );
+    canvas.drawPath(
+      Path()
+        ..moveTo(24, 28)
+        ..lineTo(27, 31)
+        ..lineTo(34, 23),
+      Paint()
+        ..color = const Color(0xff8ce7b3)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2.5
+        ..strokeCap = StrokeCap.round
+        ..strokeJoin = StrokeJoin.round,
+    );
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant _BrandPainter oldDelegate) =>
+      oldDelegate.color != color;
+}
+
 class Brand extends StatelessWidget {
   final bool compact;
   final bool showName;
@@ -115,24 +187,13 @@ class Brand extends StatelessWidget {
   Widget build(BuildContext context) => Row(
     mainAxisSize: MainAxisSize.min,
     children: [
-      Container(
-        padding: const EdgeInsets.all(9),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary,
-          borderRadius: BorderRadius.circular(13),
-        ),
-        child: Icon(
-          Icons.shield_outlined,
-          color: Theme.of(context).colorScheme.onPrimary,
-          size: compact ? 22 : 28,
-        ),
-      ),
-      if (showName) const SizedBox(width: 11),
+      BrandMark(height: compact ? 36 : 42),
+      if (showName) const SizedBox(width: 9),
       if (showName)
         const Text(
           'DeepShield',
           style: TextStyle(
-            fontSize: 23,
+            fontSize: 21,
             fontWeight: FontWeight.w700,
             letterSpacing: -.7,
           ),
@@ -239,8 +300,8 @@ class ScanHero extends StatelessWidget {
                 ),
                 style: const TextStyle(
                   color: Color(0xffd1e2d7),
-                  fontSize: 17,
-                  height: 1.7,
+                  fontSize: 16,
+                  height: 1.6,
                 ),
               ),
               const SizedBox(height: 24),

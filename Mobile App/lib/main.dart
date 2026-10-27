@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/semantics.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 import 'core/session.dart';
 import 'ui/kit.dart';
@@ -11,6 +12,13 @@ SemanticsHandle? webSemanticsHandle;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  LicenseRegistry.addLicense(() async* {
+    for (final font in ['Quicksand', 'BalooDa2']) {
+      yield LicenseEntryWithLineBreaks([
+        font,
+      ], await rootBundle.loadString('assets/fonts/OFL-$font.txt'));
+    }
+  });
   if (kIsWeb) webSemanticsHandle = SemanticsBinding.instance.ensureSemantics();
   final state = AppState();
   runApp(DeepShieldApp(state: state));

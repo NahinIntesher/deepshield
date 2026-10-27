@@ -222,6 +222,16 @@ class MorePage extends StatelessWidget {
                 icon: Icons.contrast,
                 onTap: app.toggleTheme,
               ),
+              ItemRow(
+                app.t('About & licenses', 'অ্যাপের তথ্য ও লাইসেন্স'),
+                icon: Icons.info_outline,
+                onTap: () => showAboutDialog(
+                  context: context,
+                  applicationName: 'DeepShield',
+                  applicationVersion: '1.0.0',
+                  applicationLegalese: 'DeepShield · Team Hexagon',
+                ),
+              ),
             ],
           ),
         ),

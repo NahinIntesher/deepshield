@@ -32,6 +32,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/copy/bn.json
+    - assets/fonts/OFL-Quicksand.txt
+    - assets/fonts/OFL-BalooDa2.txt
   fonts:
     - family: Quicksand
       fonts:

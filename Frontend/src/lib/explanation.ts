@@ -13,7 +13,7 @@ export function validShap(result:DetectionResult):ShapEvidence|null{
 }
 export function regionName(id:string,bn:boolean){return (bn?{eyes:'চোখের চারপাশ',nose:'নাকের আশপাশ',mouth:'ঠোঁটের আশপাশ',other:'মুখের ছবির বাকি অংশ'}:{eyes:'Around the eyes',nose:'Around the nose',mouth:'Mouth and lower face',other:'Rest of the face crop'})[id as ShapRegion['id']]||(bn?'মুখের অংশ':'Face area')}
 export function resultMeaning(result:DetectionResult,bn:boolean){
- if(result.media_type==='image')return bn?'এটি ছবির একটি পরীক্ষামূলক ফল। মডেলটি ভিডিও দিয়ে train করা হয়েছে, তাই ছবির ফল বিশেষ সতর্কভাবে দেখুন।':'This is an experimental image result. The model was trained on videos, so take extra care with this result.';
+ if(result.media_type==='image')return bn?`মডেলের মতে, ছবিটি ${result.verdict==='Fake'?'নকল হতে পারে':'আসল'}। তবে মডেলটিকে ভিডিও চিনতে শেখানো হয়েছে; স্থির ছবির এই ফল পরীক্ষামূলক। শুধু এই ফল দেখে সিদ্ধান্ত নেবেন না।`:`The model chose ${result.verdict} for this image. It was trained on videos, so this still-image result is experimental. Do not rely on this result alone.`;
  return result.verdict==='Fake'?(bn?'মডেলের মতে, এই ভিডিওর মুখের ছবি বদলানো হয়ে থাকতে পারে। শেয়ার করার আগে আসল ভিডিওটি খুঁজে দেখুন।':'The model thinks the face in this video may have been altered. Find the original video before sharing it.'):(bn?'মডেল এই ভিডিওটিকে আসল হিসেবে বেছে নিয়েছে। তবুও ভিডিওর মানুষটি কে, তাঁর কথার অর্থ বা খবরটি সত্য কি না—এই পরীক্ষা তা যাচাই করে না।':'The model chose Real for this video. This test does not verify the person, what they said, or whether the claim is true.');
 }
 export function blurObservation(result:DetectionResult,region:ShapRegion,bn:boolean){

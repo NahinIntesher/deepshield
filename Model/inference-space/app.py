@@ -6,9 +6,12 @@ import time
 import zipfile
 from pathlib import Path
 
+print('DeepShield startup: loading ZeroGPU runtime', flush=True)
 import spaces  # Import before torch so ZeroGPU can manage GPU initialization.
+print('DeepShield startup: loading torch', flush=True)
 import torch
 import gradio as gr
+print('DeepShield startup: loading inference source', flush=True)
 
 ROOT = Path(__file__).resolve().parent
 os.environ['DEEPSHIELD_ROOT'] = str(ROOT)
@@ -30,7 +33,9 @@ face_dir.mkdir(parents=True, exist_ok=True)
 shutil.copyfile(ROOT/'det_10g.onnx', face_dir/'det_10g.onnx')
 torch.set_num_threads(2)
 model_manager.device = torch.device('cpu')
+print('DeepShield startup: loading verified checkpoint', flush=True)
 model_manager.ensure_loaded()
+print('DeepShield startup: checkpoint loaded', flush=True)
 EXPECTED = 'be33edbb69a80072439b8ea361ee9b00f635a2604ea2a4b9c1bfabe731067b7e'
 if model_manager.checkpoint_sha256 != EXPECTED:
     raise RuntimeError('The model checkpoint does not match the verified original.')

@@ -2,6 +2,7 @@
 import {useLocale} from '@/lib/Locale';
 
 import {T} from '@/components/LocalizedText';
+import DetectionExplanation from '@/components/DetectionExplanation';
 
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -96,7 +97,8 @@ export default function ResearchPage() {const {t}=useLocale();
     setHumanConfidence(3);
     setSelectedClues([]);
     setSubmissionResult(null);
-    setCurrentIndex((prev) => (prev + 1 < items.length ? prev + 1 : 0));
+    setItems(prev=>prev.filter(item=>item.id!==items[currentIndex]?.id));
+    setCurrentIndex(0);
     startTimeRef.current = Date.now();
   };
 
@@ -292,7 +294,7 @@ export default function ResearchPage() {const {t}=useLocale();
                     <T>{submissionResult.quadrant_description}</T>
                   </h4>
                 </div>
-                <span className="text-xs font-bold px-2 py-1 rounded-md bg-white border border-slate-200 text-slate-800 shadow-xs">{" "}<T text="GT:" />{" "}{submissionResult.ground_truth}
+                <span className="text-xs font-bold px-2 py-1 rounded-md bg-white border border-slate-200 text-slate-800 shadow-xs">{t('Dataset label:','ডেটাসেটের উত্তর:')} <T>{submissionResult.ground_truth}</T>
                 </span>
               </div>
 
@@ -309,7 +311,7 @@ export default function ResearchPage() {const {t}=useLocale();
                     )}
                   </div>
                   <p className="text-xl font-extrabold text-slate-900">
-                    {submissionResult.human_prediction}
+                    <T>{submissionResult.human_prediction}</T>
                   </p>
                   <p className="text-[11px] text-slate-500">{" "}<T text="Confidence: Level" />{" "}{submissionResult.human_confidence}/5
                   </p>
@@ -326,9 +328,9 @@ export default function ResearchPage() {const {t}=useLocale();
                     )}
                   </div>
                   <p className="text-xl font-extrabold text-slate-900">
-                    {submissionResult.ai_prediction}
+                    <T>{submissionResult.ai_prediction}</T>
                   </p>
-                  <p className="text-[11px] text-slate-500">{" "}<T text="Confidence:" />{" "}{Math.round(submissionResult.ai_confidence * 100)}%
+                  <p className="text-[11px] text-slate-500">{t('Model score:','মডেলের স্কোর:')} {Math.round(submissionResult.ai_confidence * 100)}%
                   </p>
                 </div>
               </div>
@@ -337,15 +339,16 @@ export default function ResearchPage() {const {t}=useLocale();
               <div className="p-4 rounded-2xl bg-brand-50/70 border border-brand-200/80 space-y-2">
                 <h4 className="text-xs font-bold text-brand-900 flex items-center gap-1.5 uppercase">
                   <BrainCircuit className="w-4 h-4 text-brand-600" />
-                  <span><T text="XAI Disagreement Diagnostic:" /></span>
+                  <span>{t('How your answers compare','আপনার উত্তর ও মডেলের ফল')}</span>
                 </h4>
                 <p className="text-xs text-brand-950 leading-relaxed">
-                  {submissionResult.explanation}
+                  {submissionResult.disagreement_quadrant==='Q1'?t('Your answer and the model’s answer both match the dataset label.','আপনার উত্তর ও মডেলের ফল—দুটিই ডেটাসেটের উত্তরের সঙ্গে মিলেছে।'):submissionResult.disagreement_quadrant==='Q2'?t('Your answer matches the dataset label. The model’s answer does not.','আপনার উত্তর ডেটাসেটের উত্তরের সঙ্গে মিলেছে। মডেলের ফল মেলেনি।'):submissionResult.disagreement_quadrant==='Q3'?t('The model’s answer matches the dataset label. Your answer does not.','মডেলের ফল ডেটাসেটের উত্তরের সঙ্গে মিলেছে। আপনার উত্তর মেলেনি।'):t('Neither answer matches the dataset label.','আপনার উত্তর ও মডেলের ফল—কোনোটিই ডেটাসেটের উত্তরের সঙ্গে মেলেনি।')}
+                  {' '}{t('This comparison does not establish why an answer was wrong.','এই তুলনা থেকে ভুলের কারণ নিশ্চিতভাবে জানা যায় না।')}
                 </p>
               </div>
 
               {/* Spatial Patch Heatmap */}
-              {submissionResult.xai_heatmap_url && (
+              {!submissionResult.analysis && submissionResult.xai_heatmap_url && (
                 <div className="glass-panel p-4 rounded-2xl space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-slate-900"><T text="Input-gradient Sensitivity Heatmap" /></span>
@@ -372,18 +375,12 @@ export default function ResearchPage() {const {t}=useLocale();
                 </div>
               )}
 
-              {/* Next Item CTA */}
-              <button
-                onClick={handleNextItem}
-                className="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-brand-500/20"
-              >
-                <span><T text="Evaluate Next Research Sample" /></span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           )}
         </div>
       </div>
+      {submissionResult?.analysis && <DetectionExplanation result={submissionResult.analysis}/>}
+      {submissionResult && <button type="button" onClick={handleNextItem} className="primary-button w-full sm:w-auto">{t('Continue to the next video','পরের ভিডিওতে যান')}<ArrowRight size={18}/></button>}
     </div>
   );
 }

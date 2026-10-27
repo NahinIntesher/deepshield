@@ -50,6 +50,7 @@ export interface ResearchItem {
 }
 
 export interface ResearchSubmissionResult {
+  analysis?: DetectionResult | null;
   submission_id: number;
   item_id: number;
   ground_truth: string;

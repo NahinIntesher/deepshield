@@ -44,11 +44,15 @@ if model_manager.checkpoint_sha256 != EXPECTED:
 @spaces.GPU(duration=120)
 def gpu_predict(prepared, explain):
     start = time.perf_counter()
-    model_manager.device = torch.device('cuda')
+    model_manager.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model_manager.model.to(model_manager.device)
     try:
         result = model_manager.predict(prepared, explain=explain)
-        result['inference_gpu_seconds'] = round(time.perf_counter()-start, 3)
+        elapsed = round(time.perf_counter()-start, 3)
+        result['inference_seconds'] = elapsed
+        result['inference_device'] = model_manager.device.type
+        if model_manager.device.type == 'cuda':
+            result['inference_gpu_seconds'] = elapsed
         return result
     finally:
         model_manager.model.to('cpu')
@@ -74,7 +78,7 @@ def analyze(file_path, explain=True):
 
 
 with gr.Blocks(title='DeepShield inference', delete_cache=(300,300)) as demo:
-    gr.Markdown('# DeepShield inference\nPrivate video detector. Still-image analysis is experimental. Free GPU quota applies.')
+    gr.Markdown('# DeepShield inference\nPrivate video detector. Still-image analysis is experimental. CPU analysis can take several minutes; ZeroGPU has a shared quota.')
     media = gr.File(label='Image or video', type='filepath', file_types=['.jpg','.jpeg','.png','.webp','.mp4','.mov','.avi','.mkv','.webm'])
     explain = gr.Checkbox(value=True, label='Include visual explanations')
     run = gr.Button('Analyze')

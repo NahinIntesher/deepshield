@@ -30,7 +30,7 @@ def analyze(path,explain=True):
                 _client=Client(os.environ['MODEL_SPACE_ID'].strip(),token=token,verbose=False,
                                max_workers=1,httpx_kwargs={'timeout':180},analytics_enabled=False)
             job=_client.submit(handle_file(str(path)),bool(explain),api_name='/predict')
-            result=job.result(timeout=180)
+            result=job.result(timeout=360 if explain else 180)
             if not isinstance(result,dict) or result.get('model_id')!=expected_id():
                 raise RuntimeError('Online detector checkpoint verification failed.')
             for field in ('confidence_percentage','fake_probability'):

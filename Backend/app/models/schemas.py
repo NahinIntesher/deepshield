@@ -88,6 +88,7 @@ class ResearchSubmissionRequest(BaseModel):
     reaction_time_ms: int
 
 class ResearchSubmissionResponse(BaseModel):
+    analysis: Optional[Dict[str, Any]] = None
     model_id: Optional[str] = None
     model_name: Optional[str] = None
     checkpoint_epoch: Optional[int] = None

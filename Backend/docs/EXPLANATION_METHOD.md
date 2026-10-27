@@ -24,10 +24,14 @@ Neither heatmaps nor SHAP justify claims such as “a lip defect was found” or
 
 SHAP failures preserve the trained prediction and available gradient evidence. Older saved records without SHAP show an explicit unavailable state. They are not assigned invented explanations. Games that request prediction without explanations do not incur SHAP computation.
 
+Research Challenge reveals the same explanation only after a participant submits their own answer. Its stored research metadata retains numeric SHAP provenance without duplicating private face previews. Comparison feedback describes agreement with the dataset label; it does not claim to establish why a person or model made an error.
+
 ## Verification performed
 
 The original checkpoint was tested on `real/00037.mp4` and `fake/id3_id16_0008.mp4`. Predictions remained Real 98.0981707572937 and Fake 99.90187883377075 respectively. The Real result's original frame details and gradient overlays matched the pre-SHAP baseline exactly. These are regression observations on two videos, not an accuracy evaluation.
 
 All three attribution games completed on both videos. Maximum observed additivity error was below 0.000001. Warm local GPU explanation time for the tested Fake video was about 6.52 seconds; cold starts and hosted latency vary.
+
+The original Real video also completed prediction and SHAP on two local CPU threads in about 88.56 seconds. This is a local timing observation, not a hosted CPU latency guarantee. The inference app supports CPU and CUDA without changing the checkpoint. Selecting CPU hardware on Hugging Face may require a subscription even when the hardware card says Free; no paid subscription was enabled.
 
 Run `pytest tests/test_shap_explanation.py` from Backend for analytical interaction, region partition, signed attribution, probability and failure-isolation checks. `scripts/verify_shap_actual.py` performs the original-checkpoint regression audit and writes private review artifacts. Frontend `scripts/test-explanation.cjs` checks both real audit results; generate those private fixtures first. No private face previews, checkpoint or secrets should be committed.

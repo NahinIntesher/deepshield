@@ -1,4 +1,5 @@
 import json
+import copy
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -113,10 +114,22 @@ def submit_research_evaluation(payload: ResearchSubmissionRequest, actor=Depends
         explanation += ' ' + result['xai_error']
     explanation += f" Aligned faces: {result['detected_frames']}/16; final-frame repetitions: {result['repeated_frames']}."
 
+    # Preserve attribution provenance without storing preview images in list metadata.
+    metadata = {k:result[k] for k in ("frame_indices","detected_frames","repeated_frames","fusion_gates","temporal_scores","xai_error")}
+    metadata['explanation_method'] = result.get('explanation_method')
+    metadata['shap_error'] = result.get('shap_error')
+    if result.get('shap_explanation'):
+        evidence = copy.deepcopy(result['shap_explanation'])
+        spatial = evidence.get('spatial', {})
+        spatial.pop('preview', None)
+        for region in spatial.get('regions', []):
+            region.pop('preview', None)
+        metadata['shap_explanation'] = evidence
+
     # Persist submission
     submission = ResearchSubmission(
         model_id=result["model_id"], model_name=result["model_name"], checkpoint_epoch=result["checkpoint_epoch"],
-        inference_metadata=json.dumps({k:result[k] for k in ("frame_indices","detected_frames","repeated_frames","fusion_gates","temporal_scores","xai_error")}),
+        inference_metadata=json.dumps(metadata),
         item_id=item.id,
         user_id=user.id,
         human_prediction=payload.human_prediction,
@@ -138,6 +151,7 @@ def submit_research_evaluation(payload: ResearchSubmissionRequest, actor=Depends
         db.commit()
 
     return ResearchSubmissionResponse(
+        analysis=result,
         model_id=result["model_id"], model_name=result["model_name"], checkpoint_epoch=result["checkpoint_epoch"], xai_error=result["xai_error"],
         submission_id=submission.id,
         item_id=item.id,

@@ -80,6 +80,14 @@ ThemeData shieldTheme(bool dark, bool bn) {
         borderRadius: BorderRadius.circular(14),
         borderSide: BorderSide(color: scheme.outline.withValues(alpha: .4)),
       ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: scheme.primary, width: 1),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: scheme.error, width: 1),
+      ),
     ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(

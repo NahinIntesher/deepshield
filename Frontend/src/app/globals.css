@@ -3090,6 +3090,17 @@ html:not(.dark) .chart-legend span:nth-child(3){color:#795815}
 .field{border-radius:12px;min-height:52px;border-color:var(--control-line);padding:13px 15px}
 .field:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .auth-form .field:focus,.auth-form .field:focus-visible{outline:none;outline-offset:0;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+/* Text controls use one inner focus indicator across every workspace. */
+:is(.field,input:not([type=checkbox],[type=radio],[type=range],[type=file],[type=hidden],[type=button],[type=submit]),textarea,select):is(:focus,:focus-visible){outline:none;outline-offset:0;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+input:is([type=checkbox],[type=radio],[type=range]):focus-visible{outline:1px solid var(--accent);outline-offset:-1px;box-shadow:none}
+/* Keep account actions visible while the navigation list scrolls. */
+.sidebar{height:100vh;height:100dvh;max-height:100dvh;overflow:hidden;padding-bottom:max(14px,env(safe-area-inset-bottom))}
+.sidebar>.sidebar-brand,.sidebar>.nav-label{flex-shrink:0}
+.sidebar>nav{flex:1 1 0;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.sidebar-bottom{display:block;flex:0 0 auto;margin-top:0;padding:12px 4px 0;border-top:1px solid #ffffff20;background:var(--sidebar)}
+.sidebar-logout{width:100%;min-height:44px;margin:0;padding:10px 12px;border:1px solid #ffffff40;border-radius:10px;background:#ffffff08;color:#effbf2;font-size:14px;font-weight:600}
+.sidebar-logout:hover{background:#ffffff15}
+.sidebar-upgrade+.sidebar-logout{margin-top:12px}
 .auth-form form>label{display:grid;gap:8px;min-width:0;line-height:1.5}
 .auth-form h1{font-size:34px;line-height:1.2;margin-bottom:12px}
 .auth-single .auth-form{width:min(100%,540px);padding:36px}

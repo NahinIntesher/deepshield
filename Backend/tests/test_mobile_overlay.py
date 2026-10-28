@@ -39,12 +39,15 @@ def test_only_fake_capture_notifies_its_owner(monkeypatch):
     assert committed==[True]
 
 def test_capture_video_preserves_sampling_time(tmp_path):
-    path=tmp_path/'capture.avi';_temporary_video(_decode_frames([jpeg()]*16),path,500)
+    decoded=_decode_frames([jpeg()]*16)
+    path=tmp_path/'capture.avi';_temporary_video(decoded,path,500)
     video=cv2.VideoCapture(str(path))
     try:
         assert video.isOpened()
         assert video.get(cv2.CAP_PROP_FRAME_COUNT)==16
         assert video.get(cv2.CAP_PROP_FPS)==pytest.approx(2)
+        success,frame=video.read()
+        assert success and np.array_equal(frame,decoded[0])
     finally:video.release()
 
 def test_overlay_auth_validation_and_daily_quota(monkeypatch):

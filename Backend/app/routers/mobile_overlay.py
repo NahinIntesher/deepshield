@@ -70,9 +70,9 @@ def _decode_frames(images: List[bytes]):
 
 
 def _temporary_video(frames, path: Path, sample_interval_ms: int = 1000):
-    """Compose an MJPEG AVI that cv2.VideoCapture can read using the existing pipeline."""
+    """Preserve decoded screen pixels; extra JPEG compression distorts DCT features."""
     height, width = frames[0].shape[:2]
-    writer = cv2.VideoWriter(str(path), cv2.VideoWriter_fourcc(*'MJPG'), 1000.0/sample_interval_ms, (width, height))
+    writer = cv2.VideoWriter(str(path), cv2.VideoWriter_fourcc(*'FFV1'), 1000.0/sample_interval_ms, (width, height))
     if not writer.isOpened():
         raise HTTPException(503, 'Video encoder is unavailable on this backend')
     try:

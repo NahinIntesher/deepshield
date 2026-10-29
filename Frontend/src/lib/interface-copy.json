@@ -1,0 +1,566 @@
+{
+  "Welcome back": {
+    "en": "Sign in",
+    "bn": "লগইন"
+  },
+  "Create your account": {
+    "en": "Create account",
+    "bn": "অ্যাকাউন্ট খুলুন"
+  },
+  "Administrator sign in": {
+    "en": "Admin sign in",
+    "bn": "অ্যাডমিন লগইন"
+  },
+  "Complete your profile": {
+    "en": "Set up your profile",
+    "bn": "প্রোফাইল তৈরি করুন"
+  },
+  "Display name": {
+    "en": "Your name",
+    "bn": "আপনার নাম"
+  },
+  "Choose your username and display name.": {
+    "en": "",
+    "bn": ""
+  },
+  "Check media. Learn the signs.": {
+    "en": "",
+    "bn": ""
+  },
+  "Use your administrator account to continue.": {
+    "en": "",
+    "bn": ""
+  },
+  "Access is checked on the server. A member account cannot enter this workspace.": {
+    "en": "",
+    "bn": ""
+  },
+  "Upload an image or video for a private analysis.": {
+    "en": "",
+    "bn": ""
+  },
+  "Practice spotting manipulated media.": {
+    "en": "",
+    "bn": ""
+  },
+  "A thoughtful place to start.": {
+    "en": "",
+    "bn": ""
+  },
+  "Built for people who check more.": {
+    "en": "",
+    "bn": ""
+  },
+  "FOR EVERYDAY CURIOSITY": {
+    "en": "",
+    "bn": ""
+  },
+  "FOR A DEEPER PERSPECTIVE": {
+    "en": "",
+    "bn": ""
+  },
+  "MORE CAPACITY. SAME TRAINED MODEL.": {
+    "en": "",
+    "bn": ""
+  },
+  "A clear view of": {
+    "en": "Dashboard",
+    "bn": "ড্যাশবোর্ড"
+  },
+  "your entire platform.": {
+    "en": "",
+    "bn": ""
+  },
+  "Understand participation. Manage access.": {
+    "en": "",
+    "bn": ""
+  },
+  "Keep research decisions accountable.": {
+    "en": "",
+    "bn": ""
+  },
+  "Keep the service moving.": {
+    "en": "",
+    "bn": ""
+  },
+  "Your workspace": {
+    "en": "Settings & more",
+    "bn": "সেটিংস ও অন্যান্য"
+  },
+  "Overview": {
+    "en": "Dashboard",
+    "bn": "ড্যাশবোর্ড"
+  },
+  "ADMINISTRATION": {
+    "en": "Admin",
+    "bn": "অ্যাডমিন"
+  },
+  "User management": {
+    "en": "Users",
+    "bn": "ইউজার"
+  },
+  "User Management": {
+    "en": "Users",
+    "bn": "ইউজার"
+  },
+  "Manage access": {
+    "en": "Account access",
+    "bn": "অ্যাকাউন্ট অ্যাক্সেস"
+  },
+  "Access": {
+    "en": "Access",
+    "bn": "অ্যাক্সেস"
+  },
+  "Permissions": {
+    "en": "Permissions",
+    "bn": "অ্যাপের অনুমতি"
+  },
+  "Role": {
+    "en": "Role",
+    "bn": "রোল"
+  },
+  "Roles": {
+    "en": "Roles",
+    "bn": "রোল"
+  },
+  "Change role": {
+    "en": "Change role",
+    "bn": "রোল বদলান"
+  },
+  "Activity": {
+    "en": "Activity",
+    "bn": "অ্যাক্টিভিটি"
+  },
+  "Activity reports": {
+    "en": "Activity",
+    "bn": "অ্যাক্টিভিটি"
+  },
+  "Activity Analytics": {
+    "en": "Activity",
+    "bn": "অ্যাক্টিভিটি"
+  },
+  "Audit Trail": {
+    "en": "Audit log",
+    "bn": "অডিট লগ"
+  },
+  "Operations": {
+    "en": "Payments & support",
+    "bn": "পেমেন্ট ও সাপোর্ট"
+  },
+  "Source": {
+    "en": "Source",
+    "bn": "সোর্স"
+  },
+  "Choose source": {
+    "en": "Choose a file or link",
+    "bn": "ফাইল নাকি লিংক"
+  },
+  "History": {
+    "en": "History",
+    "bn": "হিস্ট্রি"
+  },
+  "Scan history": {
+    "en": "Scan history",
+    "bn": "আগের স্ক্যান"
+  },
+  "Recent scans": {
+    "en": "Recent scans",
+    "bn": "সাম্প্রতিক স্ক্যান"
+  },
+  "Check a file": {
+    "en": "Scan",
+    "bn": "স্ক্যান"
+  },
+  "Start a scan": {
+    "en": "New scan",
+    "bn": "নতুন স্ক্যান"
+  },
+  "Check a photo or video": {
+    "en": "Photo or video",
+    "bn": "ছবি বা ভিডিও"
+  },
+  "Upload a file, review the result and see what affected the answer.": {
+    "en": "",
+    "bn": ""
+  },
+  "Research eligibility": {
+    "en": "Research access",
+    "bn": "রিসার্চে অংশ নেওয়ার শর্ত"
+  },
+  "Research qualified": {
+    "en": "Eligible for research",
+    "bn": "রিসার্চে অংশ নিতে পারবেন"
+  },
+  "Awaiting review": {
+    "en": "Awaiting review",
+    "bn": "রিভিউয়ের অপেক্ষায়"
+  },
+  "Research Reviews": {
+    "en": "Research reviews",
+    "bn": "রিসার্চ রিভিউ"
+  },
+  "Research insights": {
+    "en": "Research results",
+    "bn": "রিসার্চের ফলাফল"
+  },
+  "Independent answer": {
+    "en": "Your answer",
+    "bn": "আপনার উত্তর"
+  },
+  "Compare with model": {
+    "en": "Compare with model",
+    "bn": "মডেলের সঙ্গে মিলিয়ে দেখুন"
+  },
+  "Learning Academy": {
+    "en": "Learn",
+    "bn": "শিখুন"
+  },
+  "Learning academy": {
+    "en": "Learn",
+    "bn": "শিখুন"
+  },
+  "Continue learning": {
+    "en": "Continue",
+    "bn": "যেখান থেকে থেমেছিলেন"
+  },
+  "Real or fake?": {
+    "en": "Real or fake?",
+    "bn": "আসল নাকি নকল?"
+  },
+  "Solo challenge": {
+    "en": "Solo challenge",
+    "bn": "একাই খেলুন"
+  },
+  "Five videos. Make your call.": {
+    "en": "5 videos",
+    "bn": "৫টি ভিডিও"
+  },
+  "Create a room or join with a code.": {
+    "en": "",
+    "bn": ""
+  },
+  "Challenge complete": {
+    "en": "Challenge complete",
+    "bn": "খেলা শেষ"
+  },
+  "Leaderboard": {
+    "en": "Leaderboard",
+    "bn": "লিডারবোর্ড"
+  },
+  "Accuracy": {
+    "en": "Accuracy",
+    "bn": "সঠিক উত্তরের হার"
+  },
+  "Confidence": {
+    "en": "Model score",
+    "bn": "মডেলের স্কোর"
+  },
+  "Model confidence": {
+    "en": "Model score",
+    "bn": "মডেলের স্কোর"
+  },
+  "Model prediction": {
+    "en": "Model result",
+    "bn": "মডেলের ফলাফল"
+  },
+  "Detection result": {
+    "en": "Scan result",
+    "bn": "স্ক্যানের ফলাফল"
+  },
+  "Analysis status": {
+    "en": "Scan progress",
+    "bn": "স্ক্যানের অগ্রগতি"
+  },
+  "Analyzing": {
+    "en": "Analyzing",
+    "bn": "বিশ্লেষণ চলছে"
+  },
+  "Queued": {
+    "en": "Queued",
+    "bn": "স্ক্যানের পালা আসছে"
+  },
+  "completed": {
+    "en": "Completed",
+    "bn": "শেষ হয়েছে"
+  },
+  "failed": {
+    "en": "Could not complete",
+    "bn": "সম্পন্ন হয়নি"
+  },
+  "pending": {
+    "en": "Pending",
+    "bn": "অপেক্ষায়"
+  },
+  "processing": {
+    "en": "Processing",
+    "bn": "কাজ চলছে"
+  },
+  "queued": {
+    "en": "Queued",
+    "bn": "অপেক্ষায়"
+  },
+  "rejected": {
+    "en": "Not approved",
+    "bn": "অনুমোদন দেওয়া হয়নি"
+  },
+  "approved": {
+    "en": "Approved",
+    "bn": "অনুমোদিত"
+  },
+  "Real": {
+    "en": "Real",
+    "bn": "আসল"
+  },
+  "Fake": {
+    "en": "Fake",
+    "bn": "নকল"
+  },
+  "Possible deepfake": {
+    "en": "Possible deepfake",
+    "bn": "ভিডিওটি নকল হতে পারে"
+  },
+  "No scans yet": {
+    "en": "No scans yet",
+    "bn": "এখনো স্ক্যান করেননি"
+  },
+  "No results found": {
+    "en": "No results found",
+    "bn": "কোনো ফল পাওয়া যায়নি"
+  },
+  "No data available": {
+    "en": "Nothing here yet",
+    "bn": "এখনো কিছু নেই"
+  },
+  "No active browsers yet.": {
+    "en": "No browser connected",
+    "bn": "কোনো ব্রাউজার যুক্ত নেই"
+  },
+  "No support requests yet": {
+    "en": "No support requests",
+    "bn": "কোনো সাপোর্ট রিকোয়েস্ট নেই"
+  },
+  "Your support requests and replies will appear here.": {
+    "en": "",
+    "bn": ""
+  },
+  "Your scans will appear here.": {
+    "en": "",
+    "bn": ""
+  },
+  "Pair your browser to start checking as you browse.": {
+    "en": "Pair a browser to begin.",
+    "bn": "শুরু করতে ব্রাউজার যুক্ত করুন।"
+  },
+  "Delete": {
+    "en": "Delete",
+    "bn": "ডিলিট"
+  },
+  "Delete account": {
+    "en": "Delete account",
+    "bn": "অ্যাকাউন্ট ডিলিট"
+  },
+  "Delete scan": {
+    "en": "Delete scan",
+    "bn": "স্ক্যান ডিলিট"
+  },
+  "Remove": {
+    "en": "Remove",
+    "bn": "সরিয়ে দিন"
+  },
+  "Cancel": {
+    "en": "Cancel",
+    "bn": "বাতিল"
+  },
+  "Save changes": {
+    "en": "Save changes",
+    "bn": "সেভ করুন"
+  },
+  "Discard changes?": {
+    "en": "Discard changes?",
+    "bn": "পরিবর্তন সেভ না করেই বের হবেন?"
+  },
+  "This cannot be undone.": {
+    "en": "This cannot be undone.",
+    "bn": "পরে আর ফিরিয়ে আনা যাবে না।"
+  },
+  "Try again": {
+    "en": "Try again",
+    "bn": "আবার চেষ্টা করুন"
+  },
+  "Reconnect": {
+    "en": "Reconnect",
+    "bn": "আবার যুক্ত হন"
+  },
+  "The server is taking longer than usual. Please reconnect.": {
+    "en": "Server is taking longer than usual. Try reconnecting.",
+    "bn": "সার্ভারে সময় লাগছে। একটু পর আবার যুক্ত হন।"
+  },
+  "Could not connect to DeepShield. Please try again.": {
+    "en": "Could not connect. Please try again.",
+    "bn": "সংযোগ হচ্ছে না। আবার চেষ্টা করুন।"
+  },
+  "Could not complete the request. Try again.": {
+    "en": "Could not complete. Try again.",
+    "bn": "কাজটি সম্পন্ন হয়নি। আবার চেষ্টা করুন।"
+  },
+  "Your conversations": {
+    "en": "Support history",
+    "bn": "আগের সাপোর্ট রিকোয়েস্ট"
+  },
+  "Send support request": {
+    "en": "Send request",
+    "bn": "রিকোয়েস্ট পাঠান"
+  },
+  "Awaiting administrator reply.": {
+    "en": "Awaiting reply",
+    "bn": "উত্তরের অপেক্ষায়"
+  },
+  "Request Premium": {
+    "en": "Request Premium",
+    "bn": "Premium-এর আবেদন"
+  },
+  "Your current plan": {
+    "en": "Current plan",
+    "bn": "আপনার বর্তমান প্ল্যান"
+  },
+  "Sign out": {
+    "en": "Sign out",
+    "bn": "লগআউট"
+  },
+  "Settings & more": {
+    "en": "Settings & more",
+    "bn": "সেটিংস ও অন্যান্য"
+  },
+  "User guide": {
+    "en": "User guide",
+    "bn": "ব্যবহারবিধি"
+  },
+  "About & licenses": {
+    "en": "About & licenses",
+    "bn": "অ্যাপের তথ্য ও লাইসেন্স"
+  },
+  "New password": {
+    "en": "New password",
+    "bn": "নতুন পাসওয়ার্ড"
+  },
+  "Change password": {
+    "en": "Change password",
+    "bn": "পাসওয়ার্ড বদলান"
+  },
+  "No support requests": {
+    "en": "No support requests",
+    "bn": "কোনো সাপোর্ট রিকোয়েস্ট নেই"
+  },
+  "The uploaded file is empty.": {
+    "en": "The file is empty. Choose another.",
+    "bn": "ফাইলটি খালি। অন্য ফাইল দিন।"
+  },
+  "This platform did not provide the video. Try again or upload a copy you may analyze.": {
+    "en": "The platform did not provide the video. Retry or upload an authorized copy.",
+    "bn": "এই সাইট থেকে ভিডিও আনা যায়নি। আবার চেষ্টা করুন অথবা অনুমতি থাকা কপি আপলোড করুন।"
+  },
+  "The platform took too long to provide this video. Try again or upload an authorized copy.": {
+    "en": "The platform took too long. Retry or upload an authorized copy.",
+    "bn": "ভিডিও আনতে সময় বেশি লাগছে। আবার চেষ্টা করুন অথবা অনুমতি থাকা কপি আপলোড করুন।"
+  },
+  "The trained model requires an alignable face. It does not classify every kind of AI-generated video.": {
+    "en": "A clear face is required. The model cannot classify every kind of AI video.",
+    "bn": "মুখটি পরিষ্কার দেখা যেতে হবে। মডেল সব ধরনের AI ভিডিও শনাক্ত করতে পারে না।"
+  },
+  "Platform restrictions may prevent retrieval. Upload an authorized copy instead.": {
+    "en": "If the platform refuses access, upload an authorized copy.",
+    "bn": "সাইট থেকে ভিডিও আনা না গেলে অনুমতি থাকা কপি আপলোড করুন।"
+  },
+  "Even a strong detector makes mistakes. Check the original source and independent evidence.": {
+    "en": "AI can be wrong. Check the original and other reliable sources.",
+    "bn": "AI-ও ভুল করতে পারে। মূল ভিডিও ও অন্য নির্ভরযোগ্য সোর্স মিলিয়ে দেখুন।"
+  },
+  "Automatic checks while you watch social videos.": {
+    "en": "Checks while you watch",
+    "bn": "ভিডিও দেখার সময় যাচাই"
+  },
+  "Participant": {
+    "en": "Participant",
+    "bn": "সদস্য"
+  },
+  "Participants": {
+    "en": "Participants",
+    "bn": "সদস্য"
+  },
+  "participant": {
+    "en": "Participant",
+    "bn": "সদস্য"
+  },
+  "researcher": {
+    "en": "Researcher",
+    "bn": "রিসার্চার"
+  },
+  "admin": {
+    "en": "Admin",
+    "bn": "অ্যাডমিন"
+  },
+  "ms": {
+    "en": "ms",
+    "bn": "মি.সে."
+  },
+  "pp": {
+    "en": "pp",
+    "bn": "পয়েন্ট"
+  },
+  "Deepfake analysis,": {
+    "en": "Check before",
+    "bn": "শেয়ার করার আগে"
+  },
+  "with an explanation.": {
+    "en": "you share.",
+    "bn": "যাচাই করুন।"
+  },
+  "Check images and videos for signs of manipulation. Understand the result, learn what to look for and keep your analyses in one place.": {
+    "en": "Scan photos and videos. Understand the model’s result.",
+    "bn": "ছবি ও ভিডিও স্ক্যান করুন। মডেলের ফলাফল বুঝে নিন।"
+  },
+  "Upload a file or use a supported public video link. Review the prediction and visual explanation.": {
+    "en": "Upload a file or public link. See the result and explanation.",
+    "bn": "ফাইল বা পাবলিক লিংক দিন। ফলাফল ও ব্যাখ্যা দেখুন।"
+  },
+  "Revisit your analyses. Delete a scan to remove its file and result.": {
+    "en": "Review or delete your saved scans.",
+    "bn": "আগের স্ক্যান দেখুন বা ডিলিট করুন।"
+  },
+  "Follow short lessons, take quizzes and practise spotting manipulated videos, alone or with friends.": {
+    "en": "Short lessons, quizzes and video challenges.",
+    "bn": "পাঠ, কুইজ ও ভিডিও চ্যালেঞ্জে শিখুন।"
+  },
+  "Earn research eligibility through practice, then compare independent judgments with the model.": {
+    "en": "Compare your answer with the model.",
+    "bn": "নিজের উত্তরের সঙ্গে মডেলের ফলাফল মিলিয়ে দেখুন।"
+  },
+  "Upload a face image or a video. Supported public video links are available too.": {
+    "en": "Upload a photo, video or supported public link.",
+    "bn": "ছবি, ভিডিও বা সাপোর্ট করা পাবলিক লিংক দিন।"
+  },
+  "The detector samples face frames and runs the trained model. Follow the scan from your history.": {
+    "en": "The model checks selected face frames.",
+    "bn": "বাছাই করা মুখের ফ্রেম মডেল পরীক্ষা করে।"
+  },
+  "Read the prediction, inspect the visual explanation and consider the source and context.": {
+    "en": "Review the result and explanation.",
+    "bn": "ফলাফল ও ব্যাখ্যা দেখুন।"
+  },
+  "Create a free account to save and review your analyses.": {
+    "en": "",
+    "bn": ""
+  },
+  "MEDIA CHECK": {
+    "en": "",
+    "bn": ""
+  },
+  "16 sampled face frames": {
+    "en": "Photo or video",
+    "bn": "ছবি বা ভিডিও"
+  },
+  "Video prediction + visual explanation": {
+    "en": "Result & explanation",
+    "bn": "ফলাফল ও ব্যাখ্যা"
+  }
+}

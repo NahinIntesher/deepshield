@@ -27,3 +27,5 @@ Database/dataset/
 Backend/migration_backup_*/
 .vercel/
 Database/ui-review/
+
+.next-responsive-review/

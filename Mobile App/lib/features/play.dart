@@ -162,7 +162,7 @@ class _SoloPageState extends State<SoloPage> {
             Notice(app.t(error!), error: true),
             OutlinedButton(onPressed: load, child: Text(app.t('Try again'))),
           ] else
-            const Center(child: CircularProgressIndicator()),
+            const Center(child: StatusArt(StatusMotion.loading, size: 64)),
         ],
       );
     }
@@ -177,6 +177,7 @@ class _SoloPageState extends State<SoloPage> {
           EmptyState(
             app.t('Challenge complete', 'চ্যালেঞ্জ শেষ'),
             icon: Icons.emoji_events_outlined,
+            success: true,
           ),
           MetricGrid([
             (

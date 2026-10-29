@@ -74,7 +74,9 @@ class _DeepShieldAppState extends State<DeepShieldApp> {
         darkTheme: shieldTheme(true, state.bengali),
         themeMode: state.theme,
         home: state.restoring
-            ? const Scaffold(body: Center(child: CircularProgressIndicator()))
+            ? const Scaffold(
+                body: Center(child: StatusArt(StatusMotion.loading, size: 64)),
+              )
             : state.restoreError != null && state.api.token != null
             ? Scaffold(
                 body: PageBody(

@@ -326,7 +326,7 @@ class _ScanProgressState extends State<ScanProgress> {
                   child: Column(
                     children: [
                       if (job?['state'] != 'failed')
-                        const CircularProgressIndicator(),
+                        const StatusArt(StatusMotion.scan, size: 120),
                       const SizedBox(height: 20),
                       Text(app.t('${job?['state'] ?? 'Loading…'}')),
                       const SizedBox(height: 12),

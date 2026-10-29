@@ -13,6 +13,7 @@ import 'package:deepshield_mobile/features/scans.dart';
 import 'package:deepshield_mobile/features/play.dart';
 import 'package:deepshield_mobile/features/live_guard.dart';
 import 'package:deepshield_mobile/features/shell.dart';
+import 'package:deepshield_mobile/features/guide.dart';
 import 'package:deepshield_mobile/ui/kit.dart';
 
 void main() {
@@ -99,14 +100,25 @@ void main() {
       ),
     );
     return AppState(api: Api(client: dio))
+      ..interfaceCopy = object(
+        jsonDecode(File('assets/copy/interface.json').readAsStringSync()),
+      )
+      ..guideSections = objects(
+        jsonDecode(File('assets/copy/guide.json').readAsStringSync()),
+      )
       ..user = user
       ..restoring = false;
   }
 
-  Widget host(AppState app, Widget child) => AppScope(
+  Widget host(AppState app, Widget child, {double textScale = 1}) => AppScope(
     state: app,
     child: MaterialApp(
       theme: shieldTheme(app.theme == ThemeMode.dark, app.bengali),
+      builder: (context, child) => MediaQuery(
+        data: MediaQuery.of(context)
+            .copyWith(textScaler: TextScaler.linear(textScale)),
+        child: child!,
+      ),
       home: Scaffold(body: child),
     ),
   );
@@ -188,6 +200,7 @@ void main() {
     'plan': const SubscriptionPage(),
     'profile': const ProfilePage(),
     'companion': const CompanionPage(),
+    'guide': const GuidePage(),
     'admin': const AdminOverview(),
     'operations': const OperationsPage(),
     'training': const TrainingPage(),
@@ -196,13 +209,14 @@ void main() {
     'assessment': const AssessmentPage(),
     'records': const RecordsPage(),
   };
-  for (final width in [320.0, 768.0]) {
+  for (final width in [320.0, 390.0, 600.0, 768.0, 1024.0]) {
     for (final dark in [false, true]) {
       for (final bn in [false, true]) {
         testWidgets('All screens render: width=$width dark=$dark bn=$bn', (
           tester,
         ) async {
-          tester.view.physicalSize = Size(width, 900);
+          // Include short phone and landscape tablet windows, not only tall screens.
+          tester.view.physicalSize = Size(width, width == 768 ? 540 : 740);
           tester.view.devicePixelRatio = 1;
           addTearDown(tester.view.resetPhysicalSize);
           addTearDown(tester.view.resetDevicePixelRatio);
@@ -225,6 +239,41 @@ void main() {
         });
       }
     }
+  }
+  for (final size in [const Size(320, 640), const Size(768, 480)]) {
+    testWidgets('Bengali large-text layouts remain usable at $size', (
+      tester,
+    ) async {
+      tester.view.physicalSize = size;
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final app = state()
+        ..language = 'bn'
+        ..theme = ThemeMode.dark;
+      app.translations = object(
+        jsonDecode(File('assets/copy/bn.json').readAsStringSync()),
+      );
+      for (final page in {
+        ...screens,
+        'auth': const AuthPage(),
+        'users': const UsersPage(),
+      }.entries) {
+        await tester.pumpWidget(
+          host(
+            app,
+            KeyedSubtree(key: ValueKey(page.key), child: page.value),
+            textScale: 1.3,
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(
+          tester.takeException(),
+          isNull,
+          reason: '${page.key} at $size with 130% text',
+        );
+      }
+    });
   }
   testWidgets(
     'Member navigation keeps every feature including Live Guard and More',
@@ -267,10 +316,7 @@ void main() {
     await tester.pumpWidget(host(app, const HistoryPage()));
     await tester.pumpAndSettle();
     expect(find.text('Try again'), findsOneWidget);
-    expect(
-      find.text('Could not connect to DeepShield. Please try again.'),
-      findsOneWidget,
-    );
+    expect(find.text('Could not connect. Please try again.'), findsOneWidget);
   });
   testWidgets(
     'Research keeps the model hidden until the independent answer is submitted',

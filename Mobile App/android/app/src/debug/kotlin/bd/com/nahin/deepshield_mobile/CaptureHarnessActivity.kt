@@ -40,7 +40,7 @@ class CaptureHarnessActivity : Activity() {
                 .putStringArrayListExtra("allowedSources",arrayListOf("Other"))
                 .putExtra("otherPackage",packageName).putExtra("budget",1).putExtra("automatic",true)
             if(Build.VERSION.SDK_INT>=26)startForegroundService(service) else startService(service)
-            startActivity(Intent(this,SamplePlayerActivity::class.java))
+            startActivity(Intent(this,SamplePlayerActivity::class.java).putExtra("samplePath",intent.getStringExtra("samplePath") ?: "sample_fake.mp4"))
         }
         finish()
     }
@@ -52,7 +52,9 @@ class SamplePlayerActivity : Activity() {
         window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         val root=FrameLayout(this);val video=VideoView(this)
         root.addView(video,FrameLayout.LayoutParams(-1,-1,Gravity.CENTER));setContentView(root)
-        video.setVideoURI(Uri.parse("http://10.0.2.2:8787/sample.mp4"))
+        val sample=intent.getStringExtra("samplePath") ?: "sample_fake.mp4"
+        require(sample in setOf("sample_fake.mp4","sample_real.mp4"))
+        video.setVideoURI(Uri.parse("http://10.0.2.2:8787/$sample"))
         video.setOnPreparedListener {it.isLooping=true;video.start()}
     }
 }

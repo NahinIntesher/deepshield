@@ -11,3 +11,5 @@ On 28 October 2026, the owner's public YouTube Short (`9pEx7ZaD_6I`) downloaded 
 Private, age-restricted, login-only and DRM-protected content is not bypassed. A refused video remains unclassified; the UI must not show a fabricated Real/Fake result. Runtime failures and platform refusals are logged by category without recording social cookies or credentials.
 
 References: [yt-dlp EJS setup](https://github.com/yt-dlp/yt-dlp/wiki/EJS), [Render native runtime tools](https://render.com/docs/native-runtimes).
+
+Hosted verification on 29 October 2026: the deployed worker refused the same Short with the sanitized `platform_restriction` category. The scan failed without a model verdict. The runtime/download-completion fixes do not remove cloud-platform restrictions. Pairing works; hosted URL retrieval remains limited. Authorized direct upload is the supported fallback.

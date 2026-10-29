@@ -292,11 +292,13 @@ p {
   border-radius:12px;
   font-size:13px}
 .auth-page {
+  width:100%;
+  min-width:0;
   max-width:1240px;
   margin:55px auto;
   padding:0 32px;
   display:grid;
-  grid-template-columns:1.15fr 1fr;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
   gap:90px;
   align-items:center;
   min-height:calc(100vh - 210px)}
@@ -346,6 +348,8 @@ p {
   right:0;
   bottom:25px}
 .auth-form {
+  width:100%;
+  min-width:0;
   padding:36px;
   box-shadow:0 20px 80px #18382308;
   border-radius:24px}
@@ -3140,3 +3144,9 @@ input:is([type=checkbox],[type=radio],[type=range]):focus-visible{outline:1px so
 .member-scan-hero .hero-mark svg{width:72px;height:72px}
 @media(max-width:700px){.card{padding:24px}.auth-single .auth-form{padding:26px}.member-scan-hero{padding:28px;gap:20px}.member-scan-hero .hero-mark{display:none}.member-scan-hero h2{font-size:30px}.metric-card{padding:22px}.action-row{padding:20px}.page-heading{gap:16px}}
 @media(max-width:420px){.card{padding:20px}.member-scan-hero{grid-template-columns:minmax(0,1fr);padding:24px;border-radius:20px}.member-scan-hero .hero-actions>a{width:100%;justify-content:center}.auth-single .auth-form{padding:22px}.auth-form h1{font-size:29px}.action-row{gap:12px}.action-row h3{font-size:18px}.metric-card .metric-top{flex-wrap:wrap}}
+/* Keep all three media choices readable without squeezing icon and text together. */
+@media(max-width:420px){
+ .source-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+ .source-tabs button{min-width:0;min-height:64px;flex-direction:column;gap:4px;padding:8px 3px;font-size:14px;line-height:1.4;white-space:normal}
+ .source-tabs button svg{flex-shrink:0}
+}

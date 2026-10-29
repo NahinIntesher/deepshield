@@ -9,6 +9,7 @@ import 'content.dart';
 import 'member.dart';
 import 'play.dart';
 import 'scans.dart';
+import 'guide.dart';
 
 class AppShell extends StatefulWidget {
   const AppShell({super.key});
@@ -188,6 +189,7 @@ class MorePage extends StatelessWidget {
             ('Help & support', Icons.help_outline, const SupportPage()),
             ('My account', Icons.person_outline, const ProfilePage()),
           ];
+    entries.add(('User guide', Icons.menu_book_outlined, const GuidePage()));
     return PageBody(
       children: [
         PageTitle(

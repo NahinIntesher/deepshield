@@ -1,7 +1,7 @@
 name: deepshield_mobile
 description: "DeepShield — media verification, learning and research."
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.2+3
 
 environment:
   sdk: ^3.13.7
@@ -20,6 +20,7 @@ dependencies:
   web_socket_channel: ^3.0.3
   app_links: ^6.4.1
   crypto: ^3.0.6
+  lottie: 3.6.1
 
 dev_dependencies:
   flutter_test:
@@ -31,7 +32,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/motion/
     - assets/copy/bn.json
+    - assets/copy/interface.json
+    - assets/copy/guide.json
     - assets/fonts/OFL-Quicksand.txt
     - assets/fonts/OFL-BalooDa2.txt
   fonts:

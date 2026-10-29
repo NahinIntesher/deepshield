@@ -22,6 +22,8 @@ class AppState extends ChangeNotifier {
   String language = 'en';
   ThemeMode theme = ThemeMode.light;
   Map<String, dynamic> translations = {};
+  Map<String, dynamic> interfaceCopy = {};
+  List<Json> guideSections = [];
   bool restoring = true;
   String? restoreError;
   StreamSubscription<Uri>? _links;
@@ -31,6 +33,8 @@ class AppState extends ChangeNotifier {
   bool get admin => user?['role'] == 'admin';
   bool get bengali => language == 'bn';
   String t(String en, [String? bn]) {
+    final revised = object(interfaceCopy[en]);
+    if (revised.isNotEmpty) return '${revised[bengali ? 'bn' : 'en']}';
     if (!bengali) return en;
     if (bn != null) return polish(bn);
     if (translations[en] is String) return polish(translations[en]);
@@ -64,14 +68,23 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> restoreSettingsAndSession() async {
-    preferences = await SharedPreferences.getInstance();
+    // Restore small local settings together; no API request for a signed-out user.
+    final local = await Future.wait<Object?>([
+      SharedPreferences.getInstance(),
+      rootBundle.loadString('assets/copy/bn.json'),
+      storage.read(key: 'session'),
+      rootBundle.loadString('assets/copy/interface.json'),
+      rootBundle.loadString('assets/copy/guide.json'),
+    ]);
+    preferences = local[0] as SharedPreferences;
     language = preferences!.getString('language') ?? 'en';
     theme = preferences!.getBool('dark') == true
         ? ThemeMode.dark
         : ThemeMode.light;
-    translations = object(
-      jsonDecode(await rootBundle.loadString('assets/copy/bn.json')),
-    );
+    translations = object(jsonDecode(local[1] as String));
+    api.token = local[2] as String?;
+    interfaceCopy = object(jsonDecode(local[3] as String));
+    guideSections = objects(jsonDecode(local[4] as String));
     api.onExpired = () {
       unawaited(NativeGuard.stop());
       api.token = null;
@@ -87,8 +100,9 @@ class AppState extends ChangeNotifier {
       if (initial != null) await handleLink(initial);
     }
     try {
-      api.token = await storage.read(key: 'session');
-      if (api.token != null) await refresh();
+      if (api.token != null && user == null) {
+        await refresh(timeout: const Duration(seconds: 8));
+      }
     } catch (error) {
       restoreError = Api.errorText(error);
     }
@@ -96,8 +110,8 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> refresh() async {
-    user = object(await api.get('/auth/me'));
+  Future<void> refresh({Duration? timeout}) async {
+    user = object(await api.get('/auth/me', timeout: timeout));
     restoreError = null;
     notifyListeners();
   }
@@ -106,7 +120,7 @@ class AppState extends ChangeNotifier {
     restoring = true;
     notifyListeners();
     try {
-      await refresh();
+      await refresh(timeout: const Duration(seconds: 8));
     } catch (e) {
       restoreError = Api.errorText(e);
     } finally {

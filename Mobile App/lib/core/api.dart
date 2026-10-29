@@ -40,7 +40,8 @@ class Api {
           );
   Map<String, String> get headers =>
       token == null ? {} : {'Authorization': 'Bearer $token'};
-  Future<dynamic> get(String path) => request(path);
+  Future<dynamic> get(String path, {Duration? timeout}) =>
+      request(path, timeout: timeout);
   Future<dynamic> post(String path, [dynamic body]) =>
       request(path, method: 'POST', body: body ?? {});
   Future<dynamic> patch(String path, dynamic body) =>
@@ -56,9 +57,11 @@ class Api {
     ProgressCallback? onSendProgress,
     CancelToken? cancelToken,
     ResponseType? responseType,
+    Duration? timeout,
   }) async {
+    final timedCancel = timeout == null ? null : CancelToken();
     try {
-      return (await dio.request(
+      final pending = dio.request(
         path,
         data: body,
         options: Options(
@@ -67,8 +70,20 @@ class Api {
           responseType: responseType,
         ),
         onSendProgress: onSendProgress,
-        cancelToken: cancelToken,
-      )).data;
+        cancelToken: cancelToken ?? timedCancel,
+      );
+      final response = timeout == null
+          ? await pending
+          : await pending.timeout(
+              timeout,
+              onTimeout: () {
+                timedCancel?.cancel('Session check timed out');
+                throw const ApiFailure(
+                  'The server is taking longer than usual. Please reconnect.',
+                );
+              },
+            );
+      return response.data;
     } on DioException catch (error) {
       if (error.response?.statusCode == 401 && !path.contains('/login')) {
         onExpired?.call();

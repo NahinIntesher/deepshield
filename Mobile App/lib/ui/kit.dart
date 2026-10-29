@@ -2,6 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
+import 'status_art.dart';
+
+export 'status_art.dart';
+
 import '../core/api.dart';
 import '../core/session.dart';
 
@@ -53,13 +57,13 @@ ThemeData shieldTheme(bool dark, bool bn) {
       space: 28,
     ),
     cardTheme: CardThemeData(
-      elevation: 1,
+      elevation: 0,
       shadowColor: Colors.black.withValues(alpha: dark ? .16 : .06),
       surfaceTintColor: Colors.transparent,
       color: scheme.surface,
       margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(18),
         side: BorderSide(
           color: dark ? const Color(0xff393d45) : const Color(0xffd8e3d7),
         ),
@@ -115,70 +119,62 @@ ThemeData shieldTheme(bool dark, bool bn) {
   );
 }
 
-/// The same shield, play mark and mint check paths as the website Logo.tsx.
+/// Owner-approved folded monogram; the same paths are used in the web identity.
 class BrandMark extends StatelessWidget {
   final double height;
   const BrandMark({super.key, this.height = 38});
   @override
   Widget build(BuildContext context) => ExcludeSemantics(
     child: CustomPaint(
-      size: Size(height * 40 / 44, height),
-      painter: _BrandPainter(Theme.of(context).colorScheme.onSurface),
+      size: Size(height * 140 / 184, height),
+      painter: _BrandPainter(Theme.of(context).colorScheme.primary),
     ),
   );
 }
 
 class _BrandPainter extends CustomPainter {
   final Color color;
-  _BrandPainter(this.color);
+  const _BrandPainter(this.color);
   @override
   void paint(Canvas canvas, Size size) {
     canvas.save();
-    canvas.scale(size.width / 40, size.height / 44);
-    final fill = Path()
-      ..moveTo(20, 2)
-      ..lineTo(36, 8)
-      ..lineTo(36, 21)
-      ..cubicTo(36, 31, 27, 38, 20, 42)
-      ..cubicTo(13, 38, 4, 31, 4, 21)
-      ..lineTo(4, 8)
+    canvas.scale(size.width / 140, size.height / 184);
+    canvas.translate(-40, -10);
+    final top = Path()
+      ..moveTo(57, 20)
+      ..cubicTo(46, 33, 44, 51, 52, 64)
+      ..cubicTo(57, 73, 69, 79, 80, 85)
+      ..lineTo(119, 106)
+      ..cubicTo(140, 118, 150, 136, 149, 158)
+      ..cubicTo(160, 144, 167, 128, 167, 112)
+      ..cubicTo(167, 94, 158, 80, 142, 71)
+      ..lineTo(77, 37)
+      ..cubicTo(68, 32, 62, 26, 57, 20)
       ..close();
-    canvas.drawPath(fill, Paint()..color = color.withValues(alpha: .16));
-    final border = Path()
-      ..moveTo(20, 3)
-      ..lineTo(35, 9)
-      ..lineTo(35, 21)
-      ..cubicTo(35, 30, 27, 37, 20, 41)
-      ..cubicTo(13, 37, 5, 30, 5, 21)
-      ..lineTo(5, 9)
+    final stem = Path()
+      ..moveTo(57, 80)
+      ..lineTo(57, 143)
+      ..cubicTo(57, 152, 59, 157, 64, 162)
+      ..lineTo(87, 149)
+      ..lineTo(87, 103)
+      ..cubicTo(87, 97, 84, 93, 79, 90)
+      ..lineTo(57, 78)
+      ..lineTo(57, 80)
       ..close();
-    canvas.drawPath(
-      border,
-      Paint()
-        ..color = color
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2,
-    );
-    canvas.drawPath(
-      Path()
-        ..moveTo(16, 14)
-        ..lineTo(28, 22)
-        ..lineTo(16, 30)
-        ..close(),
-      Paint()..color = color,
-    );
-    canvas.drawPath(
-      Path()
-        ..moveTo(24, 28)
-        ..lineTo(27, 31)
-        ..lineTo(34, 23),
-      Paint()
-        ..color = const Color(0xff8ce7b3)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2.5
-        ..strokeCap = StrokeCap.round
-        ..strokeJoin = StrokeJoin.round,
-    );
+    final base = Path()
+      ..moveTo(62, 165)
+      ..cubicTo(73, 178, 85, 186, 98, 186)
+      ..cubicTo(105, 186, 111, 184, 119, 180)
+      ..lineTo(142, 167)
+      ..cubicTo(145, 153, 142, 137, 135, 126)
+      ..cubicTo(130, 139, 119, 148, 104, 155)
+      ..lineTo(81, 166)
+      ..cubicTo(74, 169, 68, 169, 62, 165)
+      ..close();
+    final ink = Paint()..color = color;
+    canvas.drawPath(top, ink);
+    canvas.drawPath(stem, ink);
+    canvas.drawPath(base, ink);
     canvas.restore();
   }
 
@@ -192,21 +188,25 @@ class Brand extends StatelessWidget {
   final bool showName;
   const Brand({super.key, this.compact = false, this.showName = true});
   @override
-  Widget build(BuildContext context) => Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      BrandMark(height: compact ? 36 : 42),
-      if (showName) const SizedBox(width: 9),
-      if (showName)
-        const Text(
-          'DeepShield',
-          style: TextStyle(
-            fontSize: 21,
-            fontWeight: FontWeight.w700,
-            letterSpacing: -.7,
+  Widget build(BuildContext context) => FittedBox(
+    fit: BoxFit.scaleDown,
+    alignment: Alignment.centerLeft,
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        BrandMark(height: compact ? 36 : 42),
+        if (showName) const SizedBox(width: 9),
+        if (showName)
+          const Text(
+            'DeepShield',
+            style: TextStyle(
+              fontSize: 21,
+              fontWeight: FontWeight.w700,
+              letterSpacing: -.7,
+            ),
           ),
-        ),
-    ],
+      ],
+    ),
   );
 }
 
@@ -216,7 +216,7 @@ class PageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
     key: const PageStorageKey('page-scroll'),
-    padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
+    padding: const EdgeInsets.fromLTRB(16, 16, 16, 28),
     child: Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 1100),
@@ -239,7 +239,7 @@ class Panel extends StatelessWidget {
     super.key,
     required this.child,
     this.color,
-    this.padding = const EdgeInsets.all(20),
+    this.padding = const EdgeInsets.all(18),
   });
   @override
   Widget build(BuildContext context) => Card(
@@ -286,31 +286,9 @@ class ScanHero extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                app.t('MEDIA CHECK', 'মিডিয়া যাচাই'),
-                style: const TextStyle(
-                  color: Color(0xffd1e2d7),
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1.2,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
                 app.t('Check a photo or video', 'ছবি বা ভিডিও যাচাই করুন'),
                 style: Theme.of(context).textTheme.headlineMedium
                     ?.copyWith(color: Colors.white),
-              ),
-              const SizedBox(height: 14),
-              Text(
-                app.t(
-                  'Upload a file, review the result and see what affected the answer.',
-                  'ফাইল দিন, ফলাফল দেখুন এবং কোন তথ্য ফলকে প্রভাবিত করেছে বুঝে নিন।',
-                ),
-                style: const TextStyle(
-                  color: Color(0xffd1e2d7),
-                  fontSize: 16,
-                  height: 1.6,
-                ),
               ),
               const SizedBox(height: 24),
               if (size.maxWidth < 420)
@@ -359,7 +337,10 @@ class PageTitle extends StatelessWidget {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(title, style: Theme.of(context).textTheme.headlineMedium),
-      if (subtitle != null) ...[const SizedBox(height: 8), Muted(subtitle!)],
+      if (subtitle != null && subtitle!.trim().isNotEmpty) ...[
+        const SizedBox(height: 8),
+        Muted(subtitle!),
+      ],
     ],
   );
 }
@@ -480,24 +461,32 @@ class EmptyState extends StatelessWidget {
   final String title;
   final String? detail;
   final IconData icon;
+  final bool success;
   const EmptyState(
     this.title, {
     super.key,
     this.detail,
     this.icon = Icons.inbox_outlined,
+    this.success = false,
   });
   @override
   Widget build(BuildContext context) => Panel(
     child: Column(
       children: [
-        Icon(icon, size: 40, color: Theme.of(context).colorScheme.primary),
+        StatusArt(
+          success ? StatusMotion.success : StatusMotion.empty,
+          size: 104,
+        ),
         const SizedBox(height: 14),
         Text(
           title,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        if (detail != null) ...[const SizedBox(height: 8), Muted(detail!)],
+        if (detail != null && detail!.trim().isNotEmpty) ...[
+          const SizedBox(height: 8),
+          Muted(detail!),
+        ],
       ],
     ),
   );
@@ -538,7 +527,7 @@ class _RemoteViewState extends State<RemoteView> {
         return const Center(
           child: Padding(
             padding: EdgeInsets.all(40),
-            child: CircularProgressIndicator(),
+            child: StatusArt(StatusMotion.loading, size: 64),
           ),
         );
       }

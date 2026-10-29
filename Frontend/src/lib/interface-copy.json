@@ -562,5 +562,33 @@
   "Video prediction + visual explanation": {
     "en": "Result & explanation",
     "bn": "ফলাফল ও ব্যাখ্যা"
+  },
+  "Analysis ready": {
+    "en": "Analysis ready",
+    "bn": "ফলাফল প্রস্তুত"
+  },
+  "Member activity will appear here once people join.": {
+    "en": "No member activity yet",
+    "bn": "এখনো কোনো অ্যাক্টিভিটি নেই"
+  },
+  "No selected-researcher contributions have been submitted.": {
+    "en": "No research responses yet",
+    "bn": "রিসার্চের উত্তর এখনো নেই"
+  },
+  "No training runs recorded yet. A curated replay manifest and the trained model are required.": {
+    "en": "No training runs yet",
+    "bn": "এখনো কোনো ট্রেনিং হয়নি"
+  },
+  "Administrative actions will appear here as they happen.": {
+    "en": "No admin activity yet",
+    "bn": "এখনো কোনো অ্যাডমিন অ্যাক্টিভিটি নেই"
+  },
+  "No subscription requests yet.": {
+    "en": "No subscription requests",
+    "bn": "কোনো সাবস্ক্রিপশন রিকোয়েস্ট নেই"
+  },
+  "No recorded activity in this section yet.": {
+    "en": "No activity yet",
+    "bn": "এখনো কোনো অ্যাক্টিভিটি নেই"
   }
 }

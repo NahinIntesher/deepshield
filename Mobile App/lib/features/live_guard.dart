@@ -512,8 +512,8 @@ class _LiveGuardPageState extends State<LiveGuardPage>
                     initialValue: interval,
                     decoration: InputDecoration(
                       labelText: app.t(
-                          'Rescan the same video after',
-                          'একই ভিডিও আবার পরীক্ষার বিরতি',
+                        'Rescan the same video after',
+                        'একই ভিডিও আবার পরীক্ষার বিরতি',
                       ),
                     ),
                     items: [60, 120, 300, 600]

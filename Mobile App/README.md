@@ -35,10 +35,16 @@ The current pipeline samples 16 frames over about eight seconds and then waits f
 
 Use the project Flutter SDK or a compatible installation, then run `flutter pub get`, `flutter analyze` and `flutter test`. A browser preview can be compiled with `flutter build web --no-web-resources-cdn --dart-define=API_BASE=http://localhost:8001` when using the isolated review API. The preview supports username login; native Google handoff and Android permissions require Android testing.
 
-The release keystore and `android/key.properties` are private local files and must remain outside Git. APK generation is explicitly on hold until the owner approves it after review. Do not run APK packaging, install an APK, copy an APK to the project root or send a completion email during this hold.
+The release keystore and `android/key.properties` are private local files and must remain outside Git. The owner authorized release APK packaging on 27 October 2026. The release entry point is `lib/main.dart`, with the hosted HTTPS API; integration-test entry points must never be distributed.
+
+## Motion
+
+Original bundled Lottie vector artwork appears during session restoration, remote-page loading, scan processing, ordinary empty lists and challenge completion. Loading and scanning loop; empty and success states play once. Empty/success artwork plays once, respects Android reduced-motion preferences, follows light/dark theme colors and contains no embedded language-specific text. It makes no model-accuracy or authenticity claim. The website logo remains the app's brand mark. Assets can be regenerated with `python tool/create_status_art.py`.
 
 ## Verification limits
 
-The current automated checks cover responsive screen rendering, authentication validation, protected owner controls, API retry behavior, SHAP contract integrity, research answer order and research review navigation. Earlier Android integration checks covered account navigation, saved results and an actual scan. The latest UI changes still need a new Android run once APK testing resumes.
+The current automated checks cover responsive screen rendering, authentication validation, protected owner controls, API retry behavior, SHAP contract integrity, research answer order, research review navigation and bundled motion/reduced-motion behavior. Android 15 emulator checks exercised actual MediaProjection capture through the original model: a Real fixture produced no verdict notification; a Fake fixture produced a warning; leaving the selected app cleared the warning and stopping released capture. These are functional examples, not an accuracy benchmark. Earlier lossy capture trials produced false positives and are recorded in private test evidence.
+
+An actual Google account completed the production browser login and the Android PKCE session exchange. The test used the desktop browser's existing Google session for the provider step and delivered its one-time return URI through Android's normal VIEW intent; it did not test typing Google credentials in Android Chrome. The user matched `/auth/me` and the PKCE state/verifier were cleared. No session or Google tokens are published.
 
 Real MediaProjection capture, app-switch behavior and Fake-only alerts across physical Android devices remain pending. Debug capture harnesses are excluded from release and default to disabled. Email verification delivery remains paused by the owner. Free hosting can sleep or cold-start. No claim of universal device support or validated usability for older adults/children is made by layout tests alone.

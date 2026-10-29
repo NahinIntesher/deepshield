@@ -100,20 +100,7 @@ class _AuthPageState extends State<AuthPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const SizedBox(height: 28),
-                  if (!widget.onboarding && !admin)
-                    const Center(child: BrandMark(height: 58))
-                  else
-                    Icon(
-                      widget.onboarding
-                          ? Icons.person_outline
-                          : admin
-                          ? Icons.admin_panel_settings_outlined
-                          : Icons.shield_outlined,
-                      size: 58,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
                   PageTitle(
                     widget.onboarding
                         ? t('Complete your profile', 'প্রোফাইল সম্পূর্ণ করুন')
@@ -122,17 +109,8 @@ class _AuthPageState extends State<AuthPage> {
                         : admin
                         ? t('Administrator sign in', 'অ্যাডমিন লগইন')
                         : t('Welcome back', 'আবার স্বাগতম'),
-                    subtitle: widget.onboarding
-                        ? t(
-                            'Choose your username and display name.',
-                            'আপনার ইউজারনেম ও নাম বেছে নিন।',
-                          )
-                        : t(
-                            'Check media. Learn the signs.',
-                            'মিডিয়া যাচাই করুন। শনাক্ত করার কৌশল শিখুন।',
-                          ),
                   ),
-                  const SizedBox(height: 28),
+                  const SizedBox(height: 16),
                   Panel(
                     child: Form(
                       key: form,
@@ -269,10 +247,7 @@ class _AuthPageState extends State<AuthPage> {
                             icon: Icons.arrow_forward,
                           ),
                           if (!admin && !widget.onboarding) ...[
-                            const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 14),
-                              child: Center(child: Text('—  Google  —')),
-                            ),
+                            const SizedBox(height: 12),
                             OutlinedButton.icon(
                               onPressed: busy
                                   ? null
